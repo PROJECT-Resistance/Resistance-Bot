@@ -15,10 +15,12 @@ client.once('ready', () => {    //Startup check
 });
 
 client.on('message', message => {   //Command handler
+    let isOwner = message.author.id == '371365472966279178';
+
     if(greeting){ // says hi!
         if(message.content.startsWith("say hi") || message.content.startsWith("Say hi")) message.channel.send("Hi everyone~!");
     }
-    if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333')) message.channel.send('Emergency reset initiated... Shutting down...').then(message.delete()).then(m => {client.destroy();});
+    if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Emergency reset initiated... Shutting down...').then(message.delete()).then(m => {client.destroy();});
 
     if(!message.content.startsWith(prefix) || message.author.bot) return; //checks command validity
 
@@ -88,7 +90,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/logo.jpg', 'assets/RAS.png', 'assets/miku.jpg'])
-                .setAuthor('RAS Management Bot v1.0.4.1', 'attachment://RAS.png')
+                .setAuthor('RAS Management Bot v1.0.4.2', 'attachment://RAS.png')
                 .setThumbnail('attachment://logo.jpg')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
