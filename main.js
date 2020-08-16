@@ -18,15 +18,17 @@ client.on('message', message => {   //Command handler
     if(greeting){ // says hi!
         if(message.content.startsWith("say hi") || message.content.startsWith("Say hi")) message.channel.send("Hi everyone~!");
     }
-    if(!message.content.startsWith(prefix) || message.author.bot) return;
+    if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333')) message.channel.send('Emergency reset initiated... Shutting down...').then(m => {client.destroy();});
 
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase();
+    if(!message.content.startsWith(prefix) || message.author.bot) return; //checks command validity
+
+    const args = message.content.slice(prefix.length).split(/ +/); //makes arguments readable
+    const command = args.shift().toLowerCase(); //makes command readable
 
     //Commands go here
     switch(command){
         case 'ping': //ping command
-            message.channel.send('pong!');
+            message.channel.send('Pong!');
             break;
         case 'main': //accepts main application
             if(args[0] != null){
@@ -34,9 +36,9 @@ client.on('message', message => {   //Command handler
                 if (!member) return message.reply('Pls mention a member') //not a valid mention error
                 let role = (message.member.guild.roles.cache.find(role => role.name === 'Approved')); //defines the "role" variable
                 member.roles.add(role); //adds "role" to "member"
-                let chan = client.channels.cache.get('433623329811726337'); //selects channel to send confirmation to
+                let chan = client.channels.cache.get('676071670884335617'); //selects channel to send confirmation to
                 if(chan){ //sends message
-                    chan.send("<@"+member.id+"> your application has been accepted, the link is in <#409532233272262667>.");
+                    chan.send("<@"+member.id+"> your application has been accepted, the link is in <#675077554838831105>.");
                 }
             } else {
                     message.channel.send('> Error: missing userID'); //no args error
@@ -49,9 +51,9 @@ client.on('message', message => {   //Command handler
                 if (!member) return message.reply('Pls mention a member')
                 let role = (message.member.guild.roles.cache.find(role => role.name === 'Approved for enlistment'));
                 member.roles.add(role);
-                let chan = client.channels.cache.get('433623329811726337');
+                let chan = client.channels.cache.get('676071670884335617');
                 if(chan){
-                    chan.send("<@"+member.id+"> your enlistment application has also been accepted, the link is in <#409532335265153038>.");
+                    chan.send("<@"+member.id+"> your enlistment application has also been accepted, the link is in <#678301599302549544>.");
                 }
             } else {
                     message.channel.send('> Error: missing userID');
@@ -79,6 +81,26 @@ client.on('message', message => {   //Command handler
                 prefix = '!';
                 message.channel.send('Prefix reset to (!).');
             }
+            break;
+        case 'help':
+            const helpMenuEmbed = new Discord.MessageEmbed()
+	            .setColor('#0de1fd')
+                .setTitle('List of all commands:')
+                .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
+                .attachFiles(['assets/logo.jpg', 'assets/RAS.png', 'assets/miku.jpg'])
+	            .setAuthor('RAS Management Bot v1.0.4', 'attachment://RAS.png')
+	            .setThumbnail('attachment://logo.jpg')
+	            .addFields(
+		            { name: '"help"', value: 'Displays this fancy message!~' },
+                    { name: '"main @user"', value: 'Gives a member the @Approved role and sends a confirmation message!' },
+                    { name: '"army  @user"', value: 'Just like the command above, but for the RPM server instead.' },
+                    { name: '"prefix <x>"', value: 'Changes my prefix to <x>. Can be a signle character, or a word! Leaving <x> empty or rebooting my script will reset the prefix.' },
+                    { name: '"Ping"', value: 'Pong!' },
+                    { name: '"greet, greeting, or greetings"', value: 'Toggles my greeting function on or off. Say hii!~' }
+	            )
+	            .setFooter('Created by Lord Vertice#4078', 'attachment://miku.jpg');
+
+            message.channel.send(helpMenuEmbed);
             break;
     }
 });
