@@ -18,7 +18,7 @@ client.on('message', message => {   //Command handler
     if(greeting){ // says hi!
         if(message.content.startsWith("say hi") || message.content.startsWith("Say hi")) message.channel.send("Hi everyone~!");
     }
-    if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333')) message.channel.send('Emergency reset initiated... Shutting down...').then(m => {client.destroy();});
+    if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333')) message.channel.send('Emergency reset initiated... Shutting down...').then(message.delete()).then(m => {client.destroy();});
 
     if(!message.content.startsWith(prefix) || message.author.bot) return; //checks command validity
 
@@ -84,21 +84,21 @@ client.on('message', message => {   //Command handler
             break;
         case 'help':
             const helpMenuEmbed = new Discord.MessageEmbed()
-	            .setColor('#0de1fd')
+                .setColor('#0de1fd')
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/logo.jpg', 'assets/RAS.png', 'assets/miku.jpg'])
-	            .setAuthor('RAS Management Bot v1.0.4', 'attachment://RAS.png')
-	            .setThumbnail('attachment://logo.jpg')
-	            .addFields(
-		            { name: '"help"', value: 'Displays this fancy message!~' },
+                .setAuthor('RAS Management Bot v1.0.4.1', 'attachment://RAS.png')
+                .setThumbnail('attachment://logo.jpg')
+                .addFields(
+                { name: '"help"', value: 'Displays this fancy message!~' },
                     { name: '"main @user"', value: 'Gives a member the @Approved role and sends a confirmation message!' },
-                    { name: '"army  @user"', value: 'Just like the command above, but for the RPM server instead.' },
-                    { name: '"prefix <x>"', value: 'Changes my prefix to <x>. Can be a signle character, or a word! Leaving <x> empty or rebooting my script will reset the prefix.' },
-                    { name: '"Ping"', value: 'Pong!' },
-                    { name: '"greet, greeting, or greetings"', value: 'Toggles my greeting function on or off. Say hii!~' }
-	            )
-	            .setFooter('Created by Lord Vertice#4078', 'attachment://miku.jpg');
+                    { name: '"army  @user"', value: 'Just like the command above, but for enlistment applications.' },
+                    { name: '"prefix <x>"', value: 'Changes my prefix to <x>. Can be a single character, or a word! Leaving <x> empty or rebooting my script will reset the prefix.' },
+                    { name: '"ping"', value: 'Pong!' },
+                    { name: '"greet, greeting or greetings"', value: 'Toggles my greeting function on or off. Say hii!~' }
+                )
+                .setFooter('Created by Lord Vertice#4078', 'attachment://miku.jpg');
 
             message.channel.send(helpMenuEmbed);
             break;
