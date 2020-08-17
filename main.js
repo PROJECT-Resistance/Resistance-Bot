@@ -20,6 +20,10 @@ client.on('message', message => {   //Command handler
     if(greeting){ // says hi!
         if(message.content.startsWith("say hi") || message.content.startsWith("Say hi")) message.channel.send("Hi everyone~!");
     }
+    if(greeting && !message.author.bot){
+        if(message.content.startsWith('goofnite') || message.content.startsWith('Goofnite')) message.channel.send(`Goofnite, ${message.author}!`);
+    }
+
     if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Emergency reset initiated... Shutting down...').then(message.delete()).then(m => {client.destroy();});
 
     if(!message.content.startsWith(prefix) || message.author.bot || !message.member.roles.cache.some(role => role.name === 'Staff')) return; //checks command validity
@@ -90,7 +94,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/RAS.png', 'assets/miku.jpg'])
-                .setAuthor('RAS Management Bot v1.1.1.3', 'attachment://RAS.png')
+                .setAuthor('RAS Management Bot v1.1.1.4', 'attachment://RAS.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
@@ -129,6 +133,15 @@ client.on('message', message => {   //Command handler
             const ttsMessage = args.join(" ");
             message.delete().catch(O_o => {});
             message.channel.send(`${ttsMessage}`, {tts: true});
+            break;
+        case 'watch':
+            if(args != 'null'){
+                const activity = args.join(" ");
+                if(isOwner){
+                    client.user.setActivity(`${activity}`, {type: 'WATCHING'});
+                } else message.channel.say('> Error: missing permissions');
+            } else client.user.setActivity('');
+            message.delete();
             break;
     }
 });
