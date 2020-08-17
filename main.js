@@ -90,11 +90,11 @@ client.on('message', message => {   //Command handler
             break;
         case 'help':
             const helpMenuEmbed = new Discord.MessageEmbed()
-                .setColor('#0de1fd')
+                .setColor('#406DDC')
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
-                .attachFiles(['assets/resistance_chan_pfp.png', 'assets/RAS.png', 'assets/miku.jpg'])
-                .setAuthor('RAS Management Bot v1.1.1.4', 'attachment://RAS.png')
+                .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
+                .setAuthor('Resistance Bot (ResiOS v1.1.1.5)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
@@ -122,26 +122,29 @@ client.on('message', message => {   //Command handler
         case 'announce':
             const announceMessage = args.join(" ");
             message.delete().catch(O_o => {});
-            message.channel.send(`${announceMessage} \n\nAnnouncement author: ${message.author}`);
+            message.channel.send(`${announceMessage} \n\nAnnouncement author: ${message.author}`).catch(O_o => {});
             break;
         case 'say':
             const sayMessage = args.join(" ");
             message.delete().catch(O_o => {});
-            message.channel.send(`${sayMessage}`);
+            message.channel.send(`${sayMessage}`).catch(O_o => {});
             break;
         case 'tts':
             const ttsMessage = args.join(" ");
             message.delete().catch(O_o => {});
-            message.channel.send(`${ttsMessage}`, {tts: true});
+            message.channel.send(`${ttsMessage}`, {tts: true}).catch(O_o => {});
             break;
         case 'watch':
-            if(args != 'null'){
+            if(args[0] != null){
                 const activity = args.join(" ");
                 if(isOwner){
                     client.user.setActivity(`${activity}`, {type: 'WATCHING'});
-                } else message.channel.say('> Error: missing permissions');
-            } else client.user.setActivity('');
-            message.delete();
+                    message.channel.send(`Set my status to "Watching ${activity}"!`);
+                } else message.channel.send('> Error: missing permissions');
+            } else{
+                client.user.setActivity('');
+                message.channel.send('Status cleared!')
+            }
             break;
     }
 });
