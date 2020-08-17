@@ -11,6 +11,7 @@ var greeting = true;
 const goofnite = ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight', 'good night', 'gute nacht'];
 const goodmorning = ['goodmorning', 'good morning', 'morning', 'goodmorning!', 'good morning!', 'morning!'];
 const hi = ['hi', 'hey', 'hello', 'hallo', 'heya', 'hihi', 'hey hey', 'hi!', 'hey!', 'hello!', 'hallo!', 'heya!', 'hihi!', 'hey hey!'];
+const resiName = ['740308816603775026', 'resi', 'resi-chan', 'resistance-chan']
 
 client.once('ready', () => {    //Startup check
     console.log('All systems are now online!')
@@ -31,6 +32,7 @@ client.on('message', message => {   //Command handler
     if(greeting && !message.author.bot){
         if(hi.includes(message.content.toLowerCase())) message.channel.send(`Hello ${message.author}!`);
     }
+    if(greeting && !message.author.bot && resiName.some(word => message.content.toLowerCase().includes(word)))message.channel.send('Hm?');
 
     if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Emergency reset initiated... Shutting down...').then(message.delete()).then(m => {client.destroy();});
 
@@ -102,7 +104,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS v1.1.1-7rc)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS v1.1.1-7)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
