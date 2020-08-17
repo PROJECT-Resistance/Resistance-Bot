@@ -89,9 +89,9 @@ client.on('message', message => {   //Command handler
                 .setColor('#0de1fd')
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
-                .attachFiles(['assets/logo.jpg', 'assets/RAS.png', 'assets/miku.jpg'])
-                .setAuthor('RAS Management Bot v1.1.1.2', 'attachment://RAS.png')
-                .setThumbnail('attachment://logo.jpg')
+                .attachFiles(['assets/resistance_chan_pfp.png', 'assets/RAS.png', 'assets/miku.jpg'])
+                .setAuthor('RAS Management Bot v1.1.1.3', 'attachment://RAS.png')
+                .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
                     { name: '"main @user"', value: 'Gives a member the @Approved role and sends a confirmation message!' },
