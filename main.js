@@ -10,6 +10,8 @@ var newPrefix = '';
 
 var greeting = true;
 
+const goofnite = ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight', 'good night', 'gute nacht'];
+
 client.once('ready', () => {    //Startup check
     console.log('All systems are now online!')
 });
@@ -21,7 +23,7 @@ client.on('message', message => {   //Command handler
         if(message.content.startsWith("say hi") || message.content.startsWith("Say hi")) message.channel.send("Hi everyone~!");
     }
     if(greeting && !message.author.bot){
-        if(message.content.startsWith('goofnite') || message.content.startsWith('Goofnite')) message.channel.send(`Goofnite, ${message.author}!`);
+        if(goofnite.includes(message.content.toLowerCase())) message.channel.send(`Goofnite, ${message.author}!`);
     }
 
     if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Emergency reset initiated... Shutting down...').then(message.delete()).then(m => {client.destroy();});
@@ -94,7 +96,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS v1.1.1.5)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS v1.1.1-6)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
@@ -149,4 +151,4 @@ client.on('message', message => {   //Command handler
     }
 });
 
-client.login('NzQwMzA4ODE2NjAzNzc1MDI2.XynIUA.eNE4fuqJJtJqCNEGtPO35Svfezs'); // login token
+client.login('NzQwMzA4ODE2NjAzNzc1MDI2.XynIUA.dYmxjT6usH7M44FqZT-xXK-ms4w'); // login token
