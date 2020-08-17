@@ -22,7 +22,7 @@ client.on('message', message => {   //Command handler
     }
     if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Emergency reset initiated... Shutting down...').then(message.delete()).then(m => {client.destroy();});
 
-    if(!message.content.startsWith(prefix) || message.author.bot) return; //checks command validity
+    if(!message.content.startsWith(prefix) || message.author.bot || !message.member.roles.cache.some(role => role.name === 'Staff')) return; //checks command validity
 
     const args = message.content.slice(prefix.length).split(/ +/); //makes arguments readable
     const command = args.shift().toLowerCase(); //makes command readable
@@ -35,7 +35,7 @@ client.on('message', message => {   //Command handler
         case 'main': //accepts main application
             if(args[0] != null){
                 let member = message.mentions.members.first(); //defines the "member" variable
-                if (!member) return message.reply('Pls mention a member') //not a valid mention error
+                if (!member) return message.channel.send('> Error: malformed userID') //not a valid mention error
                 let role = (message.member.guild.roles.cache.find(role => role.name === 'Approved')); //defines the "role" variable
                 member.roles.add(role); //adds "role" to "member"
                 let chan = client.channels.cache.get('676071670884335617'); //selects channel to send confirmation to
@@ -50,7 +50,7 @@ client.on('message', message => {   //Command handler
             //refer to the "main" command for syntax info
             if(args[0] != null){
                 let member = message.mentions.members.first();
-                if (!member) return message.reply('Pls mention a member')
+                if (!member) return message.channel.send('> Error: malformed userID')
                 let role = (message.member.guild.roles.cache.find(role => role.name === 'Approved for enlistment'));
                 member.roles.add(role);
                 let chan = client.channels.cache.get('676071670884335617');
@@ -90,7 +90,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/logo.jpg', 'assets/RAS.png', 'assets/miku.jpg'])
-                .setAuthor('RAS Management Bot v1.0.4.2', 'attachment://RAS.png')
+                .setAuthor('RAS Management Bot v1.1.0', 'attachment://RAS.png')
                 .setThumbnail('attachment://logo.jpg')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
@@ -98,12 +98,19 @@ client.on('message', message => {   //Command handler
                     { name: '"army  @user"', value: 'Just like the command above, but for enlistment applications.' },
                     { name: '"prefix <x>"', value: 'Changes my prefix to <x>. Can be a single character, or a word! Leaving <x> empty or rebooting my script will reset the prefix.' },
                     { name: '"ping"', value: 'Pong!' },
-                    { name: '"greet, greeting or greetings"', value: 'Toggles my greeting function on or off. Say hii!~' }
+                    { name: '"greet", "greeting" or "greetings"', value: 'Toggles my greeting function on or off. Say hii!~' },
+                    { name: '"roll [x]" or "random [x]"', value: 'Enter at least 2 options in place of [x], seperated by spaces. I will then randomly choose one of them!' }
                 )
                 .setFooter('Created by Lord Vertice#4078', 'attachment://miku.jpg');
 
             message.channel.send(helpMenuEmbed);
             break;
+            case 'roll':
+            case 'random':
+                if(args.length > 1){
+                    let random = Math.floor(Math.random() * args.length);
+                    message.channel.send('The result is: '+args[random]);
+                } else message.reply('Please enter 2 or more options I can randomly choose from.')
     }
 });
 
