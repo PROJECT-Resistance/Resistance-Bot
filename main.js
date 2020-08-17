@@ -90,7 +90,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/logo.jpg', 'assets/RAS.png', 'assets/miku.jpg'])
-                .setAuthor('RAS Management Bot v1.1.1', 'attachment://RAS.png')
+                .setAuthor('RAS Management Bot v1.1.1.2', 'attachment://RAS.png')
                 .setThumbnail('attachment://logo.jpg')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
@@ -101,7 +101,8 @@ client.on('message', message => {   //Command handler
                     { name: '"greet", "greeting" or "greetings"', value: 'Toggles my greeting function on or off. Say hii!~' },
                     { name: '"roll <x>" or "random <x>"', value: 'Enter at least 2 options in place of <x>, seperated by spaces. I will then randomly choose one of them!' },
                     { name: '"say <x>"', value: 'I will repeat the exact contents of your message, excluding the prefix and command!' },
-                    { name: '"announce <x>"', value: 'Just like "say", but I will append the author of the message at the end. Useful for announcements!' }
+                    { name: '"announce <x>"', value: 'Just like "say", but I will append the author of the message at the end. Useful for announcements!' },
+                    { name: '"tts <x>"', value: 'I have a voice now!~' }
                 )
                 .setFooter('Created by Lord Vertice#4078', 'attachment://miku.jpg');
 
@@ -123,6 +124,11 @@ client.on('message', message => {   //Command handler
             const sayMessage = args.join(" ");
             message.delete().catch(O_o => {});
             message.channel.send(`${sayMessage}`);
+            break;
+        case 'tts':
+            const ttsMessage = args.join(" ");
+            message.delete().catch(O_o => {});
+            message.channel.send(`${ttsMessage}`, {tts: true});
             break;
     }
 });
