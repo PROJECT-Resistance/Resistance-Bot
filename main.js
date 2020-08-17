@@ -90,27 +90,40 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/logo.jpg', 'assets/RAS.png', 'assets/miku.jpg'])
-                .setAuthor('RAS Management Bot v1.1.0', 'attachment://RAS.png')
+                .setAuthor('RAS Management Bot v1.1.1', 'attachment://RAS.png')
                 .setThumbnail('attachment://logo.jpg')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
                     { name: '"main @user"', value: 'Gives a member the @Approved role and sends a confirmation message!' },
-                    { name: '"army  @user"', value: 'Just like the command above, but for enlistment applications.' },
+                    { name: '"army  @user"', value: 'Just like the "main" command, but for enlistment applications.' },
                     { name: '"prefix <x>"', value: 'Changes my prefix to <x>. Can be a single character, or a word! Leaving <x> empty or rebooting my script will reset the prefix.' },
                     { name: '"ping"', value: 'Pong!' },
                     { name: '"greet", "greeting" or "greetings"', value: 'Toggles my greeting function on or off. Say hii!~' },
-                    { name: '"roll [x]" or "random [x]"', value: 'Enter at least 2 options in place of [x], seperated by spaces. I will then randomly choose one of them!' }
+                    { name: '"roll <x>" or "random <x>"', value: 'Enter at least 2 options in place of <x>, seperated by spaces. I will then randomly choose one of them!' },
+                    { name: '"say <x>"', value: 'I will repeat the exact contents of your message, excluding the prefix and command!' },
+                    { name: '"announce <x>"', value: 'Just like "say", but I will append the author of the message at the end. Useful for announcements!' }
                 )
                 .setFooter('Created by Lord Vertice#4078', 'attachment://miku.jpg');
 
             message.channel.send(helpMenuEmbed);
             break;
-            case 'roll':
-            case 'random':
-                if(args.length > 1){
-                    let random = Math.floor(Math.random() * args.length);
-                    message.channel.send('The result is: '+args[random]);
-                } else message.reply('Please enter 2 or more options I can randomly choose from.')
+        case 'roll':
+        case 'random':
+            if(args.length > 1){
+                let random = Math.floor(Math.random() * args.length);
+                message.channel.send('The result is: '+args[random]);
+            } else message.reply('Please enter 2 or more options I can randomly choose from.')
+            break;
+        case 'announce':
+            const announceMessage = args.join(" ");
+            message.delete().catch(O_o => {});
+            message.channel.send(`${announceMessage} \n\nAnnouncement author: ${message.author}`);
+            break;
+        case 'say':
+            const sayMessage = args.join(" ");
+            message.delete().catch(O_o => {});
+            message.channel.send(`${sayMessage}`);
+            break;
     }
 });
 
