@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-const fs = require('fs');
-
 var prefix = '!';     //The bot's prefix
 
 var newPrefix = '';
@@ -11,6 +9,8 @@ var newPrefix = '';
 var greeting = true;
 
 const goofnite = ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight', 'good night', 'gute nacht'];
+const goodmorning = ['goodmorning', 'good morning', 'morning', 'goodmorning!', 'good morning!', 'morning!'];
+const hi = ['hi', 'hey', 'hello', 'hallo', 'heya', 'hihi', 'hey hey', 'hi!', 'hey!', 'hello!', 'hallo!', 'heya!', 'hihi!', 'hey hey!'];
 
 client.once('ready', () => {    //Startup check
     console.log('All systems are now online!')
@@ -24,6 +24,12 @@ client.on('message', message => {   //Command handler
     }
     if(greeting && !message.author.bot){
         if(goofnite.includes(message.content.toLowerCase())) message.channel.send(`Goofnite, ${message.author}!`);
+    }
+    if(greeting && !message.author.bot){
+        if(goodmorning.includes(message.content.toLowerCase())) message.channel.send(`Good morning, ${message.author}!`);
+    }
+    if(greeting && !message.author.bot){
+        if(hi.includes(message.content.toLowerCase())) message.channel.send(`Hello ${message.author}!`);
     }
 
     if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Emergency reset initiated... Shutting down...').then(message.delete()).then(m => {client.destroy();});
@@ -76,7 +82,7 @@ client.on('message', message => {   //Command handler
             greeting = !greeting;
             break;
         case 'prefix': //change prefix
-            newPrefix = args[0];
+            newPrefix = args.join(" ");
             if(newPrefix){ //checks whether a prefix has been entered. if not, will reset to "!"
                 if(newPrefix.length == 1){ //checks is length = 1, if true it will just apply the prefix
                     prefix = newPrefix;
@@ -96,7 +102,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS v1.1.1-6)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS v1.1.1-7rc)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
@@ -104,7 +110,7 @@ client.on('message', message => {   //Command handler
                     { name: '"army  @user"', value: 'Just like the "main" command, but for enlistment applications.' },
                     { name: '"prefix <x>"', value: 'Changes my prefix to <x>. Can be a single character, or a word! Leaving <x> empty or rebooting my script will reset the prefix.' },
                     { name: '"ping"', value: 'Pong!' },
-                    { name: '"greet", "greeting" or "greetings"', value: 'Toggles my greeting function on or off. Say hii!~' },
+                    { name: '"greet", "greeting" or "greetings"', value: 'Toggles my greeting function on or off.' },
                     { name: '"roll <x>" or "random <x>"', value: 'Enter at least 2 options in place of <x>, seperated by spaces. I will then randomly choose one of them!' },
                     { name: '"say <x>"', value: 'I will repeat the exact contents of your message, excluding the prefix and command!' },
                     { name: '"announce <x>"', value: 'Just like "say", but I will append the author of the message at the end. Useful for announcements!' },
@@ -151,4 +157,4 @@ client.on('message', message => {   //Command handler
     }
 });
 
-client.login('NzQwMzA4ODE2NjAzNzc1MDI2.XynIUA.dYmxjT6usH7M44FqZT-xXK-ms4w'); // login token
+client.login('NzQwMzA4ODE2NjAzNzc1MDI2.XynIUA.fGZHf97oUUPzYQGOVHvd23JCS64'); // login token
