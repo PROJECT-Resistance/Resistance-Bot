@@ -6,13 +6,14 @@ The Resistance Bot is a small Discord bot made using [discord.js](https://discor
 
 Download and install [Node.js](https://nodejs.org/en/).  
 Then [download](https://lordvertice.hopto.org/LordVertice/resistance-bot/-/archive/master/resistance-bot-master.zip) and unzip the sourcecode of this project.  
+Now you want to download [this](https://mega.nz/file/qB9ECKrL#2tInDeIXNWZZ9m2jJrfM9rSjnCdnxp8Vm5XAmEnxvyc) template, put it in the same folder as the main.js file, and replace the Discord API token that's inside.  
 After that, you want to enter the following commands:
 
 ```bash
 cd <path>
 node .
 ```
-You should replace <path> with the location of your download (the folder with README.md).
+You should replace \<path> with the location of your download (the folder with README.md).
 
 ## Usage
 
