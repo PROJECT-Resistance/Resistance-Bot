@@ -10,8 +10,8 @@ var greeting = true;
 
 const goofnite = ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight', 'good night', 'gute nacht'];
 const goodmorning = ['goodmorning', 'good morning', 'morning', 'goodmorning!', 'good morning!', 'morning!'];
-const hi = ['hi', 'hey', 'hello', 'hallo', 'heya', 'hihi', 'hey hey', 'hi!', 'hey!', 'hello!', 'hallo!', 'heya!', 'hihi!', 'hey hey!'];
-const resiName = ['740308816603775026', 'resi', 'resi-chan', 'resistance-chan']
+const hi = ['hi', 'hey', 'hello', 'hallo', 'heya', 'hihi', 'hey hey', 'mornin', 'hi!', 'hey!', 'hello!', 'hallo!', 'heya!', 'hihi!', 'hey hey!'];
+const resiName = ['740308816603775026']
 
 client.once('ready', () => {    //Startup check
     console.log('All systems are now online!')
@@ -104,7 +104,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS v1.1.1-7)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS v1.1.1-8)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
@@ -159,4 +159,5 @@ client.on('message', message => {   //Command handler
     }
 });
 
-client.login('NzQwMzA4ODE2NjAzNzc1MDI2.XynIUA.fGZHf97oUUPzYQGOVHvd23JCS64'); // login token
+const { token } = require('./token.json'); //get token from file
+client.login(token); // login using token
