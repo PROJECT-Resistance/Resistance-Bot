@@ -11,6 +11,7 @@ var greeting = true;
 const goofnite = ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight', 'good night', 'gute nacht'];
 const goodmorning = ['goodmorning', 'good morning', 'morning', 'mornin', 'goodmorning!', 'good morning!', 'morning!'];
 const hi = ['hi', 'hey', 'hello', 'hallo', 'heya', 'hihi', 'hey hey', 'hi!', 'hey!', 'hello!', 'hallo!', 'heya!', 'hihi!', 'hey hey!'];
+const welcomeBack = ['back', 'bacc', 'bek'];
 const resiName = ['740308816603775026']
 
 client.once('ready', () => {    //Startup check
@@ -31,6 +32,9 @@ client.on('message', message => {   //Command handler
     }
     if(greeting && !message.author.bot){
         if(hi.includes(message.content.toLowerCase())) message.channel.send(`Hello ${message.author}!`);
+    }
+    if(greeting && !message.author.bot){
+        if(welcomeBack.includes(message.content.toLowerCase())) message.channel.send(`Welcome back, ${message.author}!`);
     }
     if(greeting && !message.author.bot && resiName.some(word => message.content.toLowerCase().includes(word)))message.channel.send('Hm?');
 
@@ -104,7 +108,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS v1.1.1-8)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS v1.1.1-9)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
