@@ -11,7 +11,7 @@ var greeting = true;
 const goofnite = ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight', 'good night', 'gute nacht'];
 const goodmorning = ['goodmorning', 'good morning', 'morning', 'mornin', 'goodmorning!', 'good morning!', 'morning!'];
 const hi = ['hi', 'hey', 'hello', 'hallo', 'heya', 'hihi', 'hey hey', 'hi!', 'hey!', 'hello!', 'hallo!', 'heya!', 'hihi!', 'hey hey!'];
-const welcomeBack = ['back', 'bacc', 'bek'];
+const welcomeBack = ['back', 'bacc', 'bek', 'bak', 'becc'];
 const resiName = ['740308816603775026']
 
 client.once('ready', () => {    //Startup check
