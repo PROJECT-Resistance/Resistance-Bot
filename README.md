@@ -6,7 +6,7 @@ The Resistance Bot is a small Discord bot made using [discord.js](https://discor
 
 Download and install [Node.js](https://nodejs.org/en/).  
 Then [download](https://lordvertice.hopto.org/LordVertice/resistance-bot/-/archive/master/resistance-bot-master.zip) and unzip the sourcecode of this project.  
-Now you want to download [this](https://mega.nz/file/qB9ECKrL#2tInDeIXNWZZ9m2jJrfM9rSjnCdnxp8Vm5XAmEnxvyc) template, put it in the same folder as the main.js file, and replace the Discord API token that's inside.  
+Now you have to download [this](https://mega.nz/file/qB9ECKrL#2tInDeIXNWZZ9m2jJrfM9rSjnCdnxp8Vm5XAmEnxvyc) template, put it in the root folder of the source code and paste your API token inside, replacing "<token here>" (you have to keep the quotation marks, though).  
 After that, you want to enter the following commands:
 
 ```bash
@@ -17,8 +17,13 @@ You should replace \<path> with the location of your download (the folder with R
 
 ## Usage
 
-The bot should start up now. If you want to shut it down, press ctrl+c on your keyboard while in the window of the bot.
+The bot should start up now. If you want to shut it down, press ctrl+c.
 You can restart the bot using the commands above.
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Merge requests are welcome. For major changes, please open an issue first to discuss what you would like to change.  
+
+In order to create a merge request, you might need to fork the project first.
+
+## License
+This project is licensed under the **MIT License.** [Learn more](https://choosealicense.com/licenses/mit/)
