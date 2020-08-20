@@ -1,11 +1,15 @@
 # PROJECT: Resistance Bot
 
-The Resistance Bot is a small Discord bot made using [discord.js](https://discord.js.org/). It is designed to automate certain administrative actions, as well as provide fun and entertaining features for the group.
+The Resistance Bot is a small Discord bot made using [discord.js](https://discord.js.org/). It is designed to automate some specific administrative actions, as well as provide fun and entertaining features for the group.
+
+## Important!
+This project has 2 seperate branches. If you want to download the source code and use it for yourself, use the download link provided blow. You can download the master branch manually, but this is not recommended.
+
 
 ## Installation
 
 Download and install [Node.js](https://nodejs.org/en/).  
-Then [download](https://lordvertice.hopto.org/LordVertice/resistance-bot/-/archive/master/resistance-bot-master.zip) and unzip the sourcecode of this project.  
+Then [download](https://lordvertice.hopto.org/LordVertice/resistance-bot/-/archive/public-version/resistance-bot-public-version.zip) and unzip the sourcecode of this project.  
 Now you have to download [this](https://mega.nz/file/qB9ECKrL#2tInDeIXNWZZ9m2jJrfM9rSjnCdnxp8Vm5XAmEnxvyc) template, put it in the root folder of the source code and paste your API token inside, replacing "<token here>" (you have to keep the quotation marks, though).  
 After that, you want to enter the following commands:
 

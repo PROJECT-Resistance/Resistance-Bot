@@ -110,23 +110,23 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS v1.1.1-10)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS v1.1.1-11)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
-                { name: '"help"', value: 'Displays this fancy message!~' },
-                    { name: '"main @user"', value: 'Gives a member the @Approved role and sends a confirmation message!' },
-                    { name: '"army  @user"', value: 'Just like the "main" command, but for enlistment applications.' },
-                    { name: '"prefix <x>"', value: 'Changes my prefix to <x>. Can be a single character, or a word! Leaving <x> empty or rebooting my script will reset the prefix.' },
-                    { name: '"ping"', value: 'Pong!' },
-                    { name: '"greet", "greeting" or "greetings"', value: 'Toggles my greeting function on or off.' },
-                    { name: '"roll <x>" or "random <x>"', value: 'Enter at least 2 options in place of <x>, seperated by spaces. I will then randomly choose one of them!' },
-                    { name: '"say <x>"', value: 'I will repeat the exact contents of your message, excluding the prefix and command!' },
-                    { name: '"announce <x>"', value: 'Just like "say", but I will append the author of the message at the end. Useful for announcements!' },
-                    { name: '"tts <x>"', value: 'I have a voice now!~' },
-                    { name: '"watch"', value: 'Sets my "Watching..." status on Disocord.'},
-                    { name: '"license"', value: 'This project is licensed under the MIT License. Use this command to learn more.'}
+                    { name: '"help"', value: 'Displays this fancy message!~', inline: true},
+                    { name: '"main @user"', value: 'Gives a member the @Approved role and sends a confirmation message!', inline: true},
+                    { name: '"army  @user"', value: 'Just like the "main" command, but for enlistment applications.', inline: true},
+                    { name: '"prefix <x>"', value: 'Changes my prefix to <x>. Can be a single character, or a word! Leaving <x> empty or rebooting my script will reset the prefix.', inline: true},
+                    { name: '"ping"', value: 'Pong!', inline: true},
+                    { name: '"greet", "greeting" or "greetings"', value: 'Toggles my greeting function on or off.', inline: true},
+                    { name: '"roll <x>" or "random <x>"', value: 'Enter at least 2 options in place of <x>, seperated by spaces. I will then randomly choose one of them!', inline :true},
+                    { name: '"say <x>"', value: 'I will repeat the exact contents of your message, excluding the prefix and command!', inline: true},
+                    { name: '"announce <x>"', value: 'Just like "say", but I will append the author of the message at the end. Useful for announcements!', inline: true},
+                    { name: '"tts <x>"', value: 'I have a voice now!~', inline: true},
+                    { name: '"watch"', value: 'Sets my "Watching..." status on Disocord.', inline: true},
+                    { name: '"license"', value: 'This project is licensed under the MIT License. Use this command to learn more.', inline: true}
                 )
-                .setFooter('Created by Lord Vertice#4078', 'attachment://miku.jpg');
+                .setFooter('Copyright (c) 2020 Lord Vertice', 'attachment://miku.jpg');
 
             message.channel.send(helpMenuEmbed);
             break;
