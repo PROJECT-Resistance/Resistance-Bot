@@ -1,13 +1,13 @@
 {
   "name": "resistancebot",
-  "version": "1.1.1-9",
+  "version": "1.1.1-10",
   "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lord Vertice#4078",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^12.2.0"
   }

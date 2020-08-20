@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
+var fs = require('fs');
+
 var prefix = '!';     //The bot's prefix
 
 var newPrefix = '';
@@ -120,7 +122,9 @@ client.on('message', message => {   //Command handler
                     { name: '"roll <x>" or "random <x>"', value: 'Enter at least 2 options in place of <x>, seperated by spaces. I will then randomly choose one of them!' },
                     { name: '"say <x>"', value: 'I will repeat the exact contents of your message, excluding the prefix and command!' },
                     { name: '"announce <x>"', value: 'Just like "say", but I will append the author of the message at the end. Useful for announcements!' },
-                    { name: '"tts <x>"', value: 'I have a voice now!~' }
+                    { name: '"tts <x>"', value: 'I have a voice now!~' },
+                    { name: '"watch"', value: 'Sets my "Watching..." status on Disocord.'},
+                    { name: '"license"', value: 'This project is licensed under the MIT License. Use this command to learn more.'}
                 )
                 .setFooter('Created by Lord Vertice#4078', 'attachment://miku.jpg');
 
@@ -160,6 +164,13 @@ client.on('message', message => {   //Command handler
                 message.channel.send('Status cleared!')
             }
             break;
+        case 'license':
+            fs.readFile('LICENSE.md', function (err, data) {
+                if (err) {
+                   return console.error(err);
+                }
+                message.channel.send("```\n" + data.toString()+'```');
+             });
     }
 });
 
