@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
+var fs = require('fs');
+
 var prefix = '!';     //The bot's prefix
 
 var newPrefix = '';
@@ -43,7 +45,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS Public Version v1.0.0-1)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS Public Version v1.0.0-2)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                     { name: '"help"', value: 'Displays this fancy message!~' },
@@ -53,7 +55,8 @@ client.on('message', message => {   //Command handler
                     { name: '"say <x>"', value: 'I will repeat the exact contents of your message, excluding the prefix and command!' },
                     { name: '"announce <x>"', value: 'Just like "say", but I will append the author of the message at the end. Useful for announcements!' },
                     { name: '"tts <x>"', value: 'I have a voice now!~' },
-                    { name: '"watch"', value: 'Sets my "Watching..." status on Disocord.'}
+                    { name: '"watch"', value: 'Sets my "Watching..." status on Disocord.'},
+                    { name: '"license"', value: 'This project is licensed under the MIT License. Use this command to learn more.'}
                 )
                 .setFooter('Copyright (c) 2020 Lord Vertice', 'attachment://miku.jpg');
 
@@ -91,6 +94,13 @@ client.on('message', message => {   //Command handler
                 message.channel.send('Status cleared!')
             }
             break;
+        case 'license':
+            fs.readFile('LICENSE.md', function (err, data) {
+                if (err) {
+                   return console.error(err);
+                }
+                message.channel.send("```\n" + data.toString()+'```');
+             });
     }
 });
 
