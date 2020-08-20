@@ -110,7 +110,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS v1.1.1-9)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS v1.1.1-10)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
