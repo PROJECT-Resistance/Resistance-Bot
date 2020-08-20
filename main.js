@@ -42,8 +42,8 @@ client.on('message', message => {   //Command handler
                 .setColor('#406DDC')
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
-                .attachFiles(['assets/resistance_chan_pfp.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS Public Version v1.0.0-1)', 'attachment://resistance_chan_pfp.png')
+                .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
+                .setAuthor('Resistance Bot (ResiOS Public Version v1.0.0-1)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                     { name: '"help"', value: 'Displays this fancy message!~' },
