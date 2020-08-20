@@ -42,22 +42,20 @@ client.on('message', message => {   //Command handler
                 .setColor('#406DDC')
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
-                .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS Public Version v1.0.0)', 'attachment://PR.png')
+                .attachFiles(['assets/resistance_chan_pfp.png', 'assets/miku.jpg'])
+                .setAuthor('Resistance Bot (ResiOS Public Version v1.0.0-1)', 'attachment://resistance_chan_pfp.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
-                { name: '"help"', value: 'Displays this fancy message!~' },
-                    { name: '"main @user"', value: 'Gives a member the @Approved role and sends a confirmation message!' },
-                    { name: '"army  @user"', value: 'Just like the "main" command, but for enlistment applications.' },
+                    { name: '"help"', value: 'Displays this fancy message!~' },
                     { name: '"prefix <x>"', value: 'Changes my prefix to <x>. Can be a single character, or a word! Leaving <x> empty or rebooting my script will reset the prefix.' },
                     { name: '"ping"', value: 'Pong!' },
-                    { name: '"greet", "greeting" or "greetings"', value: 'Toggles my greeting function on or off.' },
                     { name: '"roll <x>" or "random <x>"', value: 'Enter at least 2 options in place of <x>, seperated by spaces. I will then randomly choose one of them!' },
                     { name: '"say <x>"', value: 'I will repeat the exact contents of your message, excluding the prefix and command!' },
                     { name: '"announce <x>"', value: 'Just like "say", but I will append the author of the message at the end. Useful for announcements!' },
-                    { name: '"tts <x>"', value: 'I have a voice now!~' }
+                    { name: '"tts <x>"', value: 'I have a voice now!~' },
+                    { name: '"watch"', value: 'Sets my "Watching..." status on Disocord.'}
                 )
-                .setFooter('Created by Lord Vertice#4078', 'attachment://miku.jpg');
+                .setFooter('Copyright (c) 2020 Lord Vertice', 'attachment://miku.jpg');
 
             message.channel.send(helpMenuEmbed);
             break;
@@ -86,10 +84,8 @@ client.on('message', message => {   //Command handler
         case 'watch':
             if(args[0] != null){
                 const activity = args.join(" ");
-                if(isOwner){
-                    client.user.setActivity(`${activity}`, {type: 'WATCHING'});
-                    message.channel.send(`Set my status to "Watching ${activity}"!`);
-                } else message.channel.send('> Error: missing permissions');
+                client.user.setActivity(`${activity}`, {type: 'WATCHING'});
+                message.channel.send(`Set my status to "Watching ${activity}"!`);
             } else{
                 client.user.setActivity('');
                 message.channel.send('Status cleared!')
