@@ -6,41 +6,13 @@ var prefix = '!';     //The bot's prefix
 
 var newPrefix = '';
 
-var greeting = true;
-
-const goofnite = ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight', 'good night', 'gute nacht'];
-const goodmorning = ['goodmorning', 'good morning', 'morning', 'mornin', 'goodmorning!', 'good morning!', 'morning!'];
-const hi = ['hi', 'hey', 'hello', 'hallo', 'heya', 'hihi', 'hey hey', 'hi!', 'hey!', 'hello!', 'hallo!', 'heya!', 'hihi!', 'hey hey!'];
-const welcomeBack = ['back', 'bacc', 'bek', 'bak', 'becc'];
-const resiName = ['740308816603775026']
-
 client.once('ready', () => {    //Startup check
     console.log('All systems are now online!')
 });
 
 client.on('message', message => {   //Command handler
-    let isOwner = message.author.id == '371365472966279178';
 
-    if(greeting){ // says hi!
-        if(message.content.startsWith("say hi") || message.content.startsWith("Say hi")) message.channel.send("Hi everyone~!");
-    }
-    if(greeting && !message.author.bot){
-        if(goofnite.includes(message.content.toLowerCase())) message.channel.send(`Goofnite, ${message.author}!`);
-    }
-    if(greeting && !message.author.bot){
-        if(goodmorning.includes(message.content.toLowerCase())) message.channel.send(`Good morning, ${message.author}!`);
-    }
-    if(greeting && !message.author.bot){
-        if(hi.includes(message.content.toLowerCase())) message.channel.send(`Hello ${message.author}!`);
-    }
-    if(greeting && !message.author.bot){
-        if(welcomeBack.includes(message.content.toLowerCase())) message.channel.send(`Welcome back, ${message.author}!`);
-    }
-    if(greeting && !message.author.bot && resiName.some(word => message.content.toLowerCase().includes(word)))message.channel.send('Hm?');
-
-    if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Emergency reset initiated... Shutting down...').then(message.delete()).then(m => {client.destroy();});
-
-    if(!message.content.startsWith(prefix) || message.author.bot || !message.member.roles.cache.some(role => role.name === 'Staff')) return; //checks command validity
+    if(!message.content.startsWith(prefix) || message.author.bot) return; //checks command validity
 
     const args = message.content.slice(prefix.length).split(/ +/); //makes arguments readable
     const command = args.shift().toLowerCase(); //makes command readable
@@ -49,43 +21,6 @@ client.on('message', message => {   //Command handler
     switch(command){
         case 'ping': //ping command
             message.channel.send('Pong!');
-            break;
-        case 'main': //accepts main application
-            if(args[0] != null){
-                let member = message.mentions.members.first(); //defines the "member" variable
-                if (!member) return message.channel.send('> Error: malformed userID') //not a valid mention error
-                let role = (message.member.guild.roles.cache.find(role => role.name === 'Approved')); //defines the "role" variable
-                member.roles.add(role); //adds "role" to "member"
-                let chan = client.channels.cache.get('676071670884335617'); //selects channel to send confirmation to
-                if(chan){ //sends message
-                    chan.send("<@"+member.id+"> your application has been accepted, the link is in <#675077554838831105>.");
-                }
-            } else {
-                    message.channel.send('> Error: missing userID'); //no args error
-            }
-            break;
-        case 'army':
-            //refer to the "main" command for syntax info
-            if(args[0] != null){
-                let member = message.mentions.members.first();
-                if (!member) return message.channel.send('> Error: malformed userID')
-                let role = (message.member.guild.roles.cache.find(role => role.name === 'Approved for enlistment'));
-                member.roles.add(role);
-                let chan = client.channels.cache.get('676071670884335617');
-                if(chan){
-                    chan.send("<@"+member.id+"> your enlistment application has also been accepted, the link is in <#678301599302549544>.");
-                }
-            } else {
-                    message.channel.send('> Error: missing userID');
-            }
-            break;
-        case 'greeting':
-        case 'greetings':
-        case 'greet':
-            if(!greeting){ //toggle "say hi"
-                message.channel.send('Greetings activated!');
-            } else message.channel.send('Greetings deactivated.');
-            greeting = !greeting;
             break;
         case 'prefix': //change prefix
             newPrefix = args.join(" ");
@@ -108,7 +43,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS v1.1.1-9)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS Public Version v1.0.0)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                 { name: '"help"', value: 'Displays this fancy message!~' },
