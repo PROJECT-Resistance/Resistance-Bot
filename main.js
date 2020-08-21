@@ -4,9 +4,7 @@ const client = new Discord.Client();
 
 var fs = require('fs');
 
-const config = require("./config.json");
-
-var prefix = config.prefix;     //The bot's prefix
+var prefix = '!';     //The bot's prefix
 
 var newPrefix = '';
 
@@ -30,16 +28,13 @@ client.on('message', message => {   //Command handler
             newPrefix = args.join(" ");
             if(newPrefix){ //checks whether a prefix has been entered. if not, will reset to "!"
                 if(newPrefix.length == 1){ //checks is length = 1, if true it will just apply the prefix
-                    config.prefix = newPrefix;
                     prefix = newPrefix;
                     message.channel.send('My prefix is now ('+prefix+')');
                 } else if(newPrefix.length > 1){ //if the prefix length is >1, it will add a space to the prefix
-                    config.prefix = (newPrefix+' ');
                     prefix = (newPrefix+' ');
                     message.channel.send('My prefix is now ('+newPrefix+')');
                 } else message.channel.send('Error');
             } else{
-                config.prefix = '!';
                 prefix = '!';
                 message.channel.send('Prefix reset to (!).');
             }
@@ -50,11 +45,11 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS Public Version v1.0.0-3)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS Public Version v1.0.0-2)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                     { name: '"help"', value: 'Displays this fancy message!~' },
-                    { name: '"prefix <x>"', value: 'Changes my prefix to <x>. Can be a single character, or a word! Leaving <x> empty will reset the prefix.' },
+                    { name: '"prefix <x>"', value: 'Changes my prefix to <x>. Can be a single character, or a word! Leaving <x> empty or rebooting my script will reset the prefix.' },
                     { name: '"ping"', value: 'Pong!' },
                     { name: '"roll <x>" or "random <x>"', value: 'Enter at least 2 options in place of <x>, seperated by spaces. I will then randomly choose one of them!' },
                     { name: '"say <x>"', value: 'I will repeat the exact contents of your message, excluding the prefix and command!' },
@@ -94,11 +89,9 @@ client.on('message', message => {   //Command handler
                 const activity = args.join(" ");
                 client.user.setActivity(`${activity}`, {type: 'WATCHING'});
                 message.channel.send(`Set my status to "Watching ${activity}"!`);
-                config.status = activity;
             } else{
                 client.user.setActivity('');
-                message.channel.send('Status cleared!');
-                config.status = '';
+                message.channel.send('Status cleared!')
             }
             break;
         case 'license':
