@@ -123,7 +123,7 @@ client.on('message', message => {   //Command handler
                     { name: '"say <x>"', value: 'I will repeat the exact contents of your message, excluding the prefix and command!', inline: true},
                     { name: '"announce <x>"', value: 'Just like "say", but I will append the author of the message at the end. Useful for announcements!', inline: true},
                     { name: '"tts <x>"', value: 'I have a voice now!~', inline: true},
-                    { name: '"watch"', value: 'Sets my "Watching..." status on Disocord.', inline: true},
+                    { name: '"watch"', value: 'Sets my "Watching..." status on Discord.', inline: true},
                     { name: '"license"', value: 'This project is licensed under the MIT License. Use this command to learn more.', inline: true}
                 )
                 .setFooter('Copyright (c) 2020 Lord Vertice', 'attachment://miku.jpg');
