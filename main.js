@@ -47,6 +47,8 @@ client.on('message', message => {   //Command handler
     const args = message.content.slice(prefix.length).split(/ +/); //makes arguments readable
     const command = args.shift().toLowerCase(); //makes command readable
 
+    console.log(`${message.author}: ${prefix}${command} ${args.join(" ")}`);
+
     //Commands go here
     switch(command){
         case 'ping': //ping command
