@@ -47,7 +47,7 @@ client.on('message', message => {   //Command handler
     const args = message.content.slice(prefix.length).split(/ +/); //makes arguments readable
     const command = args.shift().toLowerCase(); //makes command readable
 
-    console.log(`${message.author}: ${prefix}${command} ${args.join(" ")}`);
+    console.log(`${message.author}: ${prefix}${command} ${args.join(" ")}`); //this is the command logger. to enable it, run the bot with "node . >>log.txt"
 
     //Commands go here
     switch(command){
@@ -112,7 +112,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS v1.1.1-11)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS v1.1.1-12)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                     { name: '"help"', value: 'Displays this fancy message!~', inline: true},
