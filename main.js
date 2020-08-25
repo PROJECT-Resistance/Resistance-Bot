@@ -8,6 +8,16 @@ var prefix = '!';     //The bot's prefix
 
 var newPrefix = '';
 
+function getTime(){
+var time = new Date();
+var timeOutput = (
+        ('0' + time.getHours()).slice(-2) + ':' +
+        ('0' + time.getMinutes()).slice(-2) + ':' +
+        ('0' + time.getSeconds()).slice(-2)
+    );
+return timeOutput;
+}
+
 var greeting = true;
 
 const goofnite = ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight', 'good night', 'gute nacht'];
@@ -17,7 +27,7 @@ const welcomeBack = ['back', 'bacc', 'bek', 'bak', 'becc'];
 const resiName = ['740308816603775026']
 
 client.once('ready', () => {    //Startup check
-    console.log('All systems are now online!')
+    console.log('-----New ResiOS Session-----\n\nAll Systems are now online!\n\nCommand and error log:')
 });
 
 client.on('message', message => {   //Command handler
@@ -40,14 +50,14 @@ client.on('message', message => {   //Command handler
     }
     if(greeting && !message.author.bot && resiName.some(word => message.content.toLowerCase().includes(word)))message.channel.send('Hm?');
 
-    if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Emergency reset initiated... Shutting down...').then(message.delete()).then(m => {client.destroy();});
+    if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Emergency shutdown initiated... Calling method client.destroy()...').then(message.delete()).then(console.warn('Emergency shutdown has been called by valid owner ID.')).then(m => {client.destroy();});
 
     if(!message.content.startsWith(prefix) || message.author.bot || !message.member.roles.cache.some(role => role.name === 'Staff')) return; //checks command validity
 
     const args = message.content.slice(prefix.length).split(/ +/); //makes arguments readable
     const command = args.shift().toLowerCase(); //makes command readable
 
-    console.log(`${message.author}: ${prefix}${command} ${args.join(" ")}`); //this is the command logger. to enable it, run the bot with "node . >>log.txt"
+    console.log(`[${getTime()}] User "${message.author.tag}" on server "${message.guild.name}" in channel "${message.channel.name}" used the following command: ${prefix}${command} ${args.join(" ")}`); //this is the command logger. to enable it, run the bot with "node . >>log.txt"
 
     //Commands go here
     switch(command){
@@ -112,7 +122,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS v1.1.1-12)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS v1.1.1-13)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                     { name: '"help"', value: 'Displays this fancy message!~', inline: true},
