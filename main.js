@@ -9,13 +9,13 @@ var prefix = '!';     //The bot's prefix
 var newPrefix = '';
 
 function getTime(){
-var time = new Date();
-var timeOutput = (
-        ('0' + time.getHours()).slice(-2) + ':' +
-        ('0' + time.getMinutes()).slice(-2) + ':' +
-        ('0' + time.getSeconds()).slice(-2)
-    );
-return timeOutput;
+    var time = new Date();
+    var timeOutput = (
+            ('0' + time.getHours()).slice(-2) + ':' +
+            ('0' + time.getMinutes()).slice(-2) + ':' +
+            ('0' + time.getSeconds()).slice(-2)
+        );
+    return timeOutput;
 }
 
 var greeting = true;
@@ -24,7 +24,7 @@ const goofnite = ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight
 const goodmorning = ['goodmorning', 'good morning', 'morning', 'mornin', 'goodmorning!', 'good morning!', 'morning!'];
 const hi = ['hi', 'hey', 'hello', 'hallo', 'heya', 'hihi', 'hey hey', 'hi!', 'hey!', 'hello!', 'hallo!', 'heya!', 'hihi!', 'hey hey!'];
 const welcomeBack = ['back', 'bacc', 'bek', 'bak', 'becc'];
-const resiName = ['740308816603775026']
+const resiName = ['740308816603775026'];
 
 client.once('ready', () => {    //Startup check
     console.log('-----New ResiOS Session-----\n\nAll Systems are now online!\n\nCommand and error log:')
@@ -33,20 +33,38 @@ client.once('ready', () => {    //Startup check
 client.on('message', message => {   //Command handler
     let isOwner = message.author.id == '371365472966279178';
 
-    if(greeting){ // says hi!
-        if(message.content.startsWith("say hi") || message.content.startsWith("Say hi")) message.channel.send("Hi everyone~!");
+    function autoResTriggered(){
+        console.log(`[${getTime()}] User "${message.author.tag}" on server "${message.guild.name}" in channel "${message.channel.name}" triggered an autoresponder.`);
+    }
+        if(greeting){ // says hi!
+        if(message.content.startsWith("say hi") || message.content.startsWith("Say hi")){
+            message.channel.send("Hi everyone~!");
+            autoResTriggered();
+        }
     }
     if(greeting && !message.author.bot){
-        if(goofnite.includes(message.content.toLowerCase())) message.channel.send(`Goofnite, ${message.author}!`);
+        if(goofnite.includes(message.content.toLowerCase())){
+            message.channel.send(`Goofnite, ${message.author}!`);
+            autoResTriggered();
+        }
     }
     if(greeting && !message.author.bot){
-        if(goodmorning.includes(message.content.toLowerCase())) message.channel.send(`Good morning, ${message.author}!`);
+        if(goodmorning.includes(message.content.toLowerCase())){
+            message.channel.send(`Good morning, ${message.author}!`);
+            autoResTriggered();
+        }
     }
     if(greeting && !message.author.bot){
-        if(hi.includes(message.content.toLowerCase())) message.channel.send(`Hello ${message.author}!`);
+        if(hi.includes(message.content.toLowerCase())){
+            message.channel.send(`Hello ${message.author}!`);
+            autoResTriggered();
+        }
     }
     if(greeting && !message.author.bot){
-        if(welcomeBack.includes(message.content.toLowerCase())) message.channel.send(`Welcome back, ${message.author}!`);
+        if(welcomeBack.includes(message.content.toLowerCase())){
+            message.channel.send(`Welcome back, ${message.author}!`);
+            autoResTriggered();
+        }
     }
     if(greeting && !message.author.bot && resiName.some(word => message.content.toLowerCase().includes(word)))message.channel.send('Hm?');
 
@@ -122,7 +140,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS v1.1.1-13)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS v1.1.1-14)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                     { name: '"help"', value: 'Displays this fancy message!~', inline: true},
@@ -173,7 +191,7 @@ client.on('message', message => {   //Command handler
                 } else message.channel.send('> Error: missing permissions');
             } else{
                 client.user.setActivity('');
-                message.channel.send('Status cleared!')
+                message.channel.send('Status cleared!');
             }
             break;
         case 'license':
