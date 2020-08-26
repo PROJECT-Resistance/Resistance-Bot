@@ -7,14 +7,14 @@ This project has 2 seperate branches. If you want to download and use the code f
 
 A list of stable releases can be found [here.](https://lordvertice.hopto.org/LordVertice/resistance-bot/-/releases) (public-version only)
 
-You are currently viewing the "public-version" branch. At least I hope so. If not, just pretend you are.
+You are currently viewing the "public-version" branch.
 
 
 ## Installation
 
 Download and install [Node.js](https://nodejs.org/en/).  
 Then download the latest version of this project from the [releases page](https://lordvertice.hopto.org/LordVertice/resistance-bot/-/releases).  
-Now you have to download [this](https://mega.nz/file/qB9ECKrL#2tInDeIXNWZZ9m2jJrfM9rSjnCdnxp8Vm5XAmEnxvyc) template, put it in the root folder of the source code (next to the main.js file) and paste your API token inside, replacing "<token here>".
+Now you have to download [this](https://mega.nz/file/qB9ECKrL#2tInDeIXNWZZ9m2jJrfM9rSjnCdnxp8Vm5XAmEnxvyc) template, put it in the root folder of the source code (next to the main.js file) and paste your API token inside, replacing \<token here>.
 
 ## Usage
 
@@ -32,7 +32,7 @@ Alternatively, you can enable the bot's logging feature by starting it with this
 cd <path>
 node . >>log.txt
 ```
-Please note that the bot will only log messages that start with it's current prefix. Logs will be saved in <path>/log.txt
+Please note that the bot will only log messages that start with it's current prefix. Logs will be saved in \<path>/log.txt
 
 ## Contributing
 Merge requests are welcome. For major changes, please open an issue first to discuss what you would like to change.  
