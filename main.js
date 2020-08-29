@@ -142,7 +142,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS v1.1.1-15)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS v1.1.1-16)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                     { name: '"help"', value: 'Displays this fancy message!~', inline: true},
@@ -157,7 +157,7 @@ client.on('message', message => {   //Command handler
                     { name: '"tts <x>"', value: 'I have a voice now!~', inline: true},
                     { name: '"watch"', value: 'Sets my "Watching..." status on Discord.', inline: true},
                     { name: '"license"', value: 'This project is licensed under the MIT License. Use this command to learn more.', inline: true},
-                    { name: '"minecraft"', value: 'Prints out the current version and player count of the Minecraft server.', inline: true}
+                    { name: '"minecraft <IP>" or "mc <IP>"', value: 'Prints out some stats for the entered Minecraft server IP. Defaults to "ncp.hopto.org".', inline: true}
                 )
                 .setFooter('Copyright (c) 2020 Lord Vertice', 'attachment://miku.jpg');
 
@@ -206,10 +206,23 @@ client.on('message', message => {   //Command handler
             });
             break;
         case 'minecraft':
-            ping('ncp.hopto.org', 25565, { protocolVersion: 498, pingTimeout: 1000 * 10, enableSRV: true }, (error, response) => {
-                if (error) throw error;
-                
-                message.channel.send(`IP: ${response.host}\nVersion: ${response.version}\nPlayers online: ${response.onlinePlayers}`);
+        case 'mc':
+            var serverVersion;
+            var serverIP = args[0];
+            if(args[0] == null) serverIP = 'ncp.hopto.org';
+            ping(serverIP, 25565, { protocolVersion: 498, pingTimeout: 1000 * 10, enableSRV: true }, (error, response) => {
+                if(error) message.channel.send('Server query failed.') && console.warn('Server query failed.');
+                if(response == null) return;
+                if(response.version === '1.12.2'){
+                    serverVersion = 'The server is currently on version "1.12.2"'
+                } else if(response.version === 'Paper 1.16.2'){
+                    serverVersion = 'The server is currently on version "Paper 1.16.2"'
+                } else serverVersion = ('The server is running an unknown version. ("'+response.version+'")')
+                message.channel.send(
+                    `Server Address: ${response.host}\n`+
+                    `Version: ${serverVersion}\n`+
+                    `Players online: ${response.onlinePlayers}\n`
+                );
             });
             break;
     }
