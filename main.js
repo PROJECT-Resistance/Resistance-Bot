@@ -4,6 +4,8 @@ const client = new Discord.Client();
 
 var fs = require('fs');
 
+const ping = require('minecraft-server-util');
+
 var prefix = '!';     //The bot's prefix
 
 var newPrefix = '';
@@ -140,7 +142,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS v1.1.1-14)', 'attachment://PR.png')
+                .setAuthor('Resistance Bot (ResiOS v1.1.1-15)', 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                     { name: '"help"', value: 'Displays this fancy message!~', inline: true},
@@ -154,7 +156,8 @@ client.on('message', message => {   //Command handler
                     { name: '"announce <x>"', value: 'Just like "say", but I will append the author of the message at the end. Useful for announcements!', inline: true},
                     { name: '"tts <x>"', value: 'I have a voice now!~', inline: true},
                     { name: '"watch"', value: 'Sets my "Watching..." status on Discord.', inline: true},
-                    { name: '"license"', value: 'This project is licensed under the MIT License. Use this command to learn more.', inline: true}
+                    { name: '"license"', value: 'This project is licensed under the MIT License. Use this command to learn more.', inline: true},
+                    { name: '"minecraft"', value: 'Prints out the current version and player count of the Minecraft server.', inline: true}
                 )
                 .setFooter('Copyright (c) 2020 Lord Vertice', 'attachment://miku.jpg');
 
@@ -200,7 +203,15 @@ client.on('message', message => {   //Command handler
                    return console.error(err);
                 }
                 message.channel.send("```\n" + data.toString()+'```');
-             });
+            });
+            break;
+        case 'minecraft':
+            ping('ncp.hopto.org', 25565, { protocolVersion: 498, pingTimeout: 1000 * 10, enableSRV: true }, (error, response) => {
+                if (error) throw error;
+                
+                message.channel.send(`IP: ${response.host}\nVersion: ${response.version}\nPlayers online: ${response.onlinePlayers}`);
+            });
+            break;
     }
 });
 
