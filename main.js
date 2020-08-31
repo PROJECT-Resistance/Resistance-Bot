@@ -10,8 +10,8 @@ var prefix = '!';     //The bot's prefix
 
 var newPrefix = '';
 
-const package = require('./package.json')
-var currentVersion = package.version
+const package = require('./package.json');
+var currentVersion = package.version;
 
 function getTime(){
     var time = new Date();
