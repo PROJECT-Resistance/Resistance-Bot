@@ -8,6 +8,9 @@ var prefix = '!';     //The bot's prefix
 
 var newPrefix = '';
 
+const package = require('./package.json');
+var currentVersion = package.version;
+
 function getTime(){
     var time = new Date();
     var timeOutput = (
@@ -18,9 +21,16 @@ function getTime(){
     return timeOutput;
     }
 
-client.once('ready', () => {    //Startup check
-    console.log('-----New ResiOS Session-----\n\nAll Systems are now online!\n\nCommand and error log:')
-});
+    client.once('ready', () => {    //Startup check
+        console.log(
+            '\n-----New ResiOS Session (Public Version)-----\n\n'+
+            'Copyright (c) 2020 Lord Vertice\n\n\n'+
+            'This project is licensed under the MIT License. Refer to the LICENSE.md file for more information.\n'+
+            'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.\n\n'+
+            'All Systems are now online!\n'+
+            'Command and error log:\n'
+        );
+    });
 
 client.on('message', message => {   //Command handler
 
@@ -57,7 +67,7 @@ client.on('message', message => {   //Command handler
                 .setTitle('List of all commands:')
                 .setDescription('All commands start with my current prefix (default: "!")\n\u200B')
                 .attachFiles(['assets/resistance_chan_pfp.png', 'assets/PR.png', 'assets/miku.jpg'])
-                .setAuthor('Resistance Bot (ResiOS Public Version v1.0.0-4)', 'attachment://PR.png')
+                .setAuthor(`Resistance Bot (ResiOS Public Version v${currentVersion})`, 'attachment://PR.png')
                 .setThumbnail('attachment://resistance_chan_pfp.png')
                 .addFields(
                     { name: '"help"', value: 'Displays this fancy message!~' },
@@ -116,5 +126,5 @@ client.on('message', message => {   //Command handler
     }
 });
 
-const { token } = require('./token.json'); //get token from file
+const {token} = require('./token.json'); //get token from file
 client.login(token); // login using token
