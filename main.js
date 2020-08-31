@@ -29,7 +29,7 @@ const welcomeBack = ['back', 'bacc', 'bek', 'bak', 'becc'];
 const resiName = ['740308816603775026'];
 
 client.once('ready', () => {    //Startup check
-    console.log('-----New ResiOS Session-----\n\nAll Systems are now online!\n\nCommand and error log:')
+    console.log('\n-----New ResiOS Session-----\n\nAll Systems are now online!\n\nCommand and error log:')
 });
 
 client.on('message', message => {   //Command handler
