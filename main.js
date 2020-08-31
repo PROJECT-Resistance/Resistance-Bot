@@ -221,7 +221,7 @@ client.on('message', message => {   //Command handler
                 message.channel.send(
                     `Server Address: ${response.host}\n`+
                     `Version: ${serverVersion}\n`+
-                    `Players online: ${response.onlinePlayers}\n`
+                    `Players online: ${response.onlinePlayers}`
                 );
             });
             break;
