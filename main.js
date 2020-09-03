@@ -44,45 +44,43 @@ client.once('ready', () => {    //Startup check
 
 client.on('message', message => {   //Command handler
     let isOwner = message.author.id == '371365472966279178';
+    let isStaff = message.member.roles.cache.some(role => role.name === 'Staff');
+
+    function invalPerms(){
+        message.channel.send('Error. You do not have the permission to use this command.');
+        console.warn('User tried to use a command, but was not permitted to do so.');
+    }
 
     function autoResTriggered(){
         console.log(`[${getTime()}] User "${message.author.tag}" on server "${message.guild.name}" in channel "${message.channel.name}" triggered an autoresponder.`);
     }
-        if(greeting){ // says hi!
+    if(greeting && !message.author.bot){
         if(message.content.startsWith("say hi") || message.content.startsWith("Say hi")){
             message.channel.send("Hi everyone~!");
             autoResTriggered();
         }
-    }
-    if(greeting && !message.author.bot){
         if(goofnite.includes(message.content.toLowerCase())){
             message.channel.send(`Goofnite, ${message.author}!`);
             autoResTriggered();
         }
-    }
-    if(greeting && !message.author.bot){
         if(goodmorning.includes(message.content.toLowerCase())){
             message.channel.send(`Good morning, ${message.author}!`);
             autoResTriggered();
         }
-    }
-    if(greeting && !message.author.bot){
         if(hi.includes(message.content.toLowerCase())){
             message.channel.send(`Hello ${message.author}!`);
             autoResTriggered();
         }
-    }
-    if(greeting && !message.author.bot){
         if(welcomeBack.includes(message.content.toLowerCase())){
             message.channel.send(`Welcome back, ${message.author}!`);
             autoResTriggered();
         }
+        if(resiName.some(word => message.content.toLowerCase().includes(word)))message.channel.send('Hm?');
     }
-    if(greeting && !message.author.bot && resiName.some(word => message.content.toLowerCase().includes(word)))message.channel.send('Hm?');
 
     if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Emergency shutdown initiated... Calling method client.destroy()...').then(message.delete()).then(console.warn('Emergency shutdown has been called by valid owner ID.')).then(m => {client.destroy();});
 
-    if(!message.content.startsWith(prefix) || message.author.bot || !message.member.roles.cache.some(role => role.name === 'Staff')) return; //checks command validity
+    if(!message.content.startsWith(prefix) || message.author.bot) return; //checks command validity
 
     const args = message.content.slice(prefix.length).split(/ +/); //makes arguments readable
     const command = args.shift().toLowerCase(); //makes command readable
@@ -95,6 +93,7 @@ client.on('message', message => {   //Command handler
             message.channel.send('Pong!');
             break;
         case 'main': //accepts main application
+            if(!isStaff){invalPerms(); return;}
             if(args[0] != null){
                 let member = message.mentions.members.first(); //defines the "member" variable
                 if (!member) return message.channel.send('> Error: malformed userID') //not a valid mention error
@@ -110,6 +109,7 @@ client.on('message', message => {   //Command handler
             break;
         case 'army':
             //refer to the "main" command for syntax info
+            if(!isStaff){invalPerms(); return;}
             if(args[0] != null){
                 let member = message.mentions.members.first();
                 if (!member) return message.channel.send('> Error: malformed userID')
@@ -126,12 +126,14 @@ client.on('message', message => {   //Command handler
         case 'greeting':
         case 'greetings':
         case 'greet':
+            if(!isStaff){invalPerms(); return;}
             if(!greeting){ //toggle "say hi"
                 message.channel.send('Greetings activated!');
             } else message.channel.send('Greetings deactivated.');
             greeting = !greeting;
             break;
         case 'prefix': //change prefix
+            if(!isStaff){invalPerms(); return;}
             newPrefix = args.join(" ");
             if(newPrefix){ //checks whether a prefix has been entered. if not, will reset to "!"
                 if(newPrefix.length == 1){ //checks is length = 1, if true it will just apply the prefix
@@ -181,21 +183,25 @@ client.on('message', message => {   //Command handler
             } else message.reply('Please enter 2 or more options I can randomly choose from.')
             break;
         case 'announce':
+            if(!isStaff){invalPerms(); return;}
             const announceMessage = args.join(" ");
             message.delete().catch(O_o => {});
             message.channel.send(`${announceMessage} \n\nAnnouncement author: ${message.author}`).catch(O_o => {});
             break;
         case 'say':
+            if(!isStaff){invalPerms(); return;}
             const sayMessage = args.join(" ");
             message.delete().catch(O_o => {});
             message.channel.send(`${sayMessage}`).catch(O_o => {});
             break;
         case 'tts':
+            if(!isStaff){invalPerms(); return;}
             const ttsMessage = args.join(" ");
             message.delete().catch(O_o => {});
             message.channel.send(`${ttsMessage}`, {tts: true}).catch(O_o => {});
             break;
         case 'watch':
+            if(!isStaff){invalPerms(); return;}
             if(args[0] != null){
                 const activity = args.join(" ");
                 if(isOwner){
@@ -212,7 +218,8 @@ client.on('message', message => {   //Command handler
                 if (err) {
                    return console.error(err);
                 }
-                message.channel.send("```\n" + data.toString()+'```');
+                message.channel.send('```\n' + data.toString()+'```');
+                message.channel.send('You can view my source code here: https://lordvertice.hopto.org/LordVertice/resistance-bot. \nContributions are welcome.');
             });
             break;
         case 'minecraft':
