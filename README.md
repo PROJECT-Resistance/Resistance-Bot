@@ -30,7 +30,7 @@ The bot should start up now. If you want to shut it down, press ctrl+c.
 Alternatively, you can enable the bot's logging feature by starting it with this command:
 ```bash
 cd <path>
-node . >>log.txt
+node . 2>&1 | tee -a log.txt
 ```
 Please note that the bot will only log messages that start with it's current prefix. Logs will be saved in \<path>/log.txt
 

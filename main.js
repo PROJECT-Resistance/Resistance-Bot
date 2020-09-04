@@ -24,14 +24,14 @@ function getTime(){
 }
 
 var greeting = true;
-
+//auto-responder triggers
 const goofnite = ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight', 'good night', 'gute nacht'];
 const goodmorning = ['goodmorning', 'good morning', 'morning', 'mornin', 'goodmorning!', 'good morning!', 'morning!'];
 const hi = ['hi', 'hey', 'hello', 'hallo', 'heya', 'hihi', 'hey hey', 'hi!', 'hey!', 'hello!', 'hallo!', 'heya!', 'hihi!', 'hey hey!'];
 const welcomeBack = ['back', 'bacc', 'bek', 'bak', 'becc'];
 const resiName = ['740308816603775026'];
 
-client.once('ready', () => {    //Startup check
+client.once('ready', () => {    //console output for startup
     console.log(
         '\n-----New ResiOS Session-----\n\n'+
         'Copyright (c) 2020 Lord Vertice\n\n\n'+
@@ -45,15 +45,16 @@ client.once('ready', () => {    //Startup check
 client.on('message', message => {   //Command handler
     let isOwner = message.author.id == '371365472966279178';
     let isStaff = message.member.roles.cache.some(role => role.name === 'Staff');
-
+    //permission stuff
     function invalPerms(){
         message.channel.send('Error. You do not have the permission to use this command.');
         console.warn('User tried to use a command, but was not permitted to do so.');
     }
-
+    //log autoresponders
     function autoResTriggered(){
         console.log(`[${getTime()}] User "${message.author.tag}" on server "${message.guild.name}" in channel "${message.channel.name}" triggered an autoresponder.`);
     }
+    //autoresponders
     if(greeting && !message.author.bot){
         if(message.content.startsWith("say hi") || message.content.startsWith("Say hi")){
             message.channel.send("Hi everyone~!");
@@ -77,7 +78,7 @@ client.on('message', message => {   //Command handler
         }
         if(resiName.some(word => message.content.toLowerCase().includes(word)))message.channel.send('Hm?');
     }
-
+    //fancy shutdown command
     if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Emergency shutdown initiated... Calling method client.destroy()...').then(message.delete()).then(console.warn('Emergency shutdown has been called by valid owner ID.')).then(m => {client.destroy();});
 
     if(!message.content.startsWith(prefix) || message.author.bot) return; //checks command validity
@@ -85,7 +86,7 @@ client.on('message', message => {   //Command handler
     const args = message.content.slice(prefix.length).split(/ +/); //makes arguments readable
     const command = args.shift().toLowerCase(); //makes command readable
 
-    console.log(`[${getTime()}] User "${message.author.tag}" on server "${message.guild.name}" in channel "${message.channel.name}" used the following command: ${prefix}${command} ${args.join(" ")}`); //this is the command logger. to enable it, run the bot with "node . >>log.txt"
+    console.log(`[${getTime()}] User "${message.author.tag}" on server "${message.guild.name}" in channel "${message.channel.name}" used the following command: ${prefix}${command} ${args.join(" ")}`); //this is the command logger. check README for instructions
 
     //Commands go here
     switch(command){
@@ -107,8 +108,7 @@ client.on('message', message => {   //Command handler
                     message.channel.send('> Error: missing userID'); //no args error
             }
             break;
-        case 'army':
-            //refer to the "main" command for syntax info
+        case 'army': //refer to the "main" command for syntax info
             if(!isStaff){invalPerms(); return;}
             if(args[0] != null){
                 let member = message.mentions.members.first();
@@ -127,7 +127,7 @@ client.on('message', message => {   //Command handler
         case 'greetings':
         case 'greet':
             if(!isStaff){invalPerms(); return;}
-            if(!greeting){ //toggle "say hi"
+            if(!greeting){ //toggle autoresponders
                 message.channel.send('Greetings activated!');
             } else message.channel.send('Greetings deactivated.');
             greeting = !greeting;
@@ -148,7 +148,7 @@ client.on('message', message => {   //Command handler
                 message.channel.send('Prefix reset to (!).');
             }
             break;
-        case 'help':
+        case 'help': //help menu embed
             const helpMenuEmbed = new Discord.MessageEmbed()
                 .setColor('#406DDC')
                 .setTitle('List of all commands:')
@@ -175,32 +175,32 @@ client.on('message', message => {   //Command handler
 
             message.channel.send(helpMenuEmbed);
             break;
-        case 'roll':
+        case 'roll': //natural 20!
         case 'random':
             if(args.length > 1){
                 let random = Math.floor(Math.random() * args.length);
                 message.channel.send('The result is: '+args[random]);
             } else message.reply('Please enter 2 or more options I can randomly choose from.')
             break;
-        case 'announce':
+        case 'announce': //!say but bad
             if(!isStaff){invalPerms(); return;}
             const announceMessage = args.join(" ");
             message.delete().catch(O_o => {});
             message.channel.send(`${announceMessage} \n\nAnnouncement author: ${message.author}`).catch(O_o => {});
             break;
-        case 'say':
+        case 'say': //!say
             if(!isStaff){invalPerms(); return;}
             const sayMessage = args.join(" ");
             message.delete().catch(O_o => {});
             message.channel.send(`${sayMessage}`).catch(O_o => {});
             break;
-        case 'tts':
+        case 'tts': //say but with voice?
             if(!isStaff){invalPerms(); return;}
             const ttsMessage = args.join(" ");
             message.delete().catch(O_o => {});
             message.channel.send(`${ttsMessage}`, {tts: true}).catch(O_o => {});
             break;
-        case 'watch':
+        case 'watch': //watch stuff
             if(!isStaff){invalPerms(); return;}
             if(args[0] != null){
                 const activity = args.join(" ");
@@ -213,7 +213,7 @@ client.on('message', message => {   //Command handler
                 message.channel.send('Status cleared!');
             }
             break;
-        case 'license':
+        case 'license': //HEY! YOU GOT A LICENSE FOR THAT?
             fs.readFile('LICENSE.md', function (err, data) {
                 if (err) {
                    return console.error(err);
@@ -222,7 +222,7 @@ client.on('message', message => {   //Command handler
                 message.channel.send('You can view my source code here: https://lordvertice.hopto.org/LordVertice/resistance-bot. \nContributions are welcome.');
             });
             break;
-        case 'minecraft':
+        case 'minecraft': //server query
         case 'mc':
             var serverVersion;
             var serverIP = args[0];
