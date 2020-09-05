@@ -3,9 +3,9 @@
 The Resistance Bot is a small Discord bot made using [discord.js](https://discord.js.org/). It is designed to automate some specific administrative actions, as well as provide fun and entertaining features for the group.
 
 ## Important!
-This project has 2 seperate branches. If you want to download and use the code for yourself, use the link to the public releases page below. You could download the master branch manually, but I would not recommend that.  
+This project has 2 seperate branches, the original "master" branch and the modified "public-version". If you want to download and use the code for yourself, use the link to the public-version releases page below. You could download the master branch manually, but I would not recommend that.  
 
-A list of stable releases can be found [here.](https://lordvertice.hopto.org/LordVertice/resistance-bot/-/releases) (public-version only)
+A list of stable public-version releases can be found [here.](https://lordvertice.hopto.org/LordVertice/resistance-bot/-/releases) (public-version only)
 
 You are currently viewing the "master" branch.
 
@@ -40,7 +40,7 @@ Merge requests are welcome. For major changes, please open an issue first to dis
 In order to create a merge request, you might need to fork the project first.
 
 ## Contact
-You don't know who I am? Why are you even here? Well, if you want to talk to me about this project (or something else), feel free to add me on Discord, the name's Lord Vertice#4078.
+You don't know who I am? Why are you even here? Well, if you want to talk to me about this project (or something else), feel free to add me on Discord, my username is Lord Vertice#4078.
 
 ## License
 This project is licensed under the **MIT License.** [Learn more](https://choosealicense.com/licenses/mit/)  

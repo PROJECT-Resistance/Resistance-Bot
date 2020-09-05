@@ -44,15 +44,16 @@ client.once('ready', () => {    //console output for startup
 
 client.on('message', message => {   //Command handler
     let isOwner = message.author.id == '371365472966279178';
-    let isStaff = message.member.roles.cache.some(role => role.name === 'Staff');
+    let isStaff;
+    try{isStaff = message.member.roles.cache.some(role => role.name === 'Staff');} catch{console.log('isStaff can\'t be read.')}
     //permission stuff
     function invalPerms(){
         message.channel.send('Error. You do not have the permission to use this command.');
-        console.warn('User tried to use a command, but was not permitted to do so.');
+        console.log(`[${getTime()}] ${message.author.tag} was not allowed to use this command.`);
     }
     //log autoresponders
     function autoResTriggered(){
-        console.log(`[${getTime()}] User "${message.author.tag}" on server "${message.guild.name}" in channel "${message.channel.name}" triggered an autoresponder.`);
+        console.log(`[${getTime()}] ${message.author.tag} triggered an autoresponder on server "${message.guild.name}" in channel "${message.channel.name}".`);
     }
     //autoresponders
     if(greeting && !message.author.bot){
@@ -79,14 +80,14 @@ client.on('message', message => {   //Command handler
         if(resiName.some(word => message.content.toLowerCase().includes(word)))message.channel.send('Hm?');
     }
     //fancy shutdown command
-    if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Emergency shutdown initiated... Calling method client.destroy()...').then(message.delete()).then(console.warn('Emergency shutdown has been called by valid owner ID.')).then(m => {client.destroy();});
+    if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Shutting down...').then(message.delete()).then(console.log('Shutdown has been triggered by valid owner ID.\n\n-----End of ResiOS Session-----')).then(m => {client.destroy();});
 
     if(!message.content.startsWith(prefix) || message.author.bot) return; //checks command validity
 
     const args = message.content.slice(prefix.length).split(/ +/); //makes arguments readable
     const command = args.shift().toLowerCase(); //makes command readable
 
-    console.log(`[${getTime()}] User "${message.author.tag}" on server "${message.guild.name}" in channel "${message.channel.name}" used the following command: ${prefix}${command} ${args.join(" ")}`); //this is the command logger. check README for instructions
+    console.log(`[${getTime()}] ${message.author.tag} used command "${prefix}${command} ${args.join(" ")}" on server "${message.guild.name}" in channel "${message.channel.name}"`); //this is the command logger. check README for instructions
 
     //Commands go here
     switch(command){
@@ -228,7 +229,7 @@ client.on('message', message => {   //Command handler
             var serverIP = args[0];
             if(args[0] == null) serverIP = 'ncp.hopto.org';
             ping(serverIP, 25565, { protocolVersion: 498, pingTimeout: 1000 * 10, enableSRV: true }, (error, response) => {
-                if(error) message.channel.send('Server query failed.') && console.warn('Server query failed.');
+                if(error) message.channel.send('Server query failed.') && console.log('Server query failed.');
                 if(response == null) return;
                 if(response.version === '1.12.2'){
                     serverVersion = 'The server is currently on version "1.12.2"'
