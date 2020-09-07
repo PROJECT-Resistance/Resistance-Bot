@@ -43,10 +43,7 @@ client.once('ready', () => {    //console output for startup
 });
 
 client.on('message', message => {   //Command handler
-    let isOwner = message.author.id == '371365472966279178';
-    let isStaff;
-    try{isStaff = message.member.roles.cache.some(role => role.name === 'Staff');} catch{console.log('isStaff can\'t be read.')}
-    //permission stuff
+
     function invalPerms(){
         message.channel.send('Error. You do not have the permission to use this command.');
         console.log(`[${getTime()}] ${message.author.tag} was not allowed to use this command.`);
@@ -83,6 +80,11 @@ client.on('message', message => {   //Command handler
     if(message.content.startsWith('Resistance Bot reset, auth code: Alpha X 333') && isOwner) message.channel.send('Shutting down...').then(message.delete()).then(console.log('Shutdown has been triggered by valid owner ID.\n\n-----End of ResiOS Session-----')).then(m => {client.destroy();});
 
     if(!message.content.startsWith(prefix) || message.author.bot) return; //checks command validity
+
+    let isOwner = message.author.id == '371365472966279178';
+    let isStaff;
+    try{isStaff = message.member.roles.cache.some(role => role.name === 'Staff');} catch{console.log(`[${getTime()}] there was an error while getting ${message.author.tag}'s roles.`)}
+    //permission stuff
 
     const args = message.content.slice(prefix.length).split(/ +/); //makes arguments readable
     const command = args.shift().toLowerCase(); //makes command readable
