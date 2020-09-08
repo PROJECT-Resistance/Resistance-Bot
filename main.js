@@ -44,6 +44,8 @@ client.once('ready', () => {    //console output for startup
 
 client.on('message', message => {   //Command handler
 
+	let isOwner = message.author.id == '371365472966279178';
+
     function invalPerms(){
         message.channel.send('Error. You do not have the permission to use this command.');
         console.log(`[${getTime()}] ${message.author.tag} was not allowed to use this command.`);
@@ -81,7 +83,6 @@ client.on('message', message => {   //Command handler
 
     if(!message.content.startsWith(prefix) || message.author.bot) return; //checks command validity
 
-    let isOwner = message.author.id == '371365472966279178';
     let isStaff;
     try{isStaff = message.member.roles.cache.some(role => role.name === 'Staff');} catch{console.log(`[${getTime()}] there was an error while getting ${message.author.tag}'s roles.`)}
     //permission stuff
@@ -172,7 +173,9 @@ client.on('message', message => {   //Command handler
                     { name: '"tts <x>"', value: 'I have a voice now!~', inline: true},
                     { name: '"watch"', value: 'Sets my "Watching..." status on Discord.', inline: true},
                     { name: '"license"', value: 'This project is licensed under the MIT License. Use this command to learn more.', inline: true},
-                    { name: '"minecraft <IP>" or "mc <IP>"', value: 'Prints out some stats for the entered Minecraft server IP. Defaults to "ncp.hopto.org".', inline: true}
+					{ name: '"minecraft <IP>" or "mc <IP>"', value: 'Prints out some stats for the entered Minecraft server IP. Defaults to "ncp.hopto.org".', inline: true},
+					{ name: '"play <YTLink>"', value: 'Plays the entered YouTube link in your voice channel.', inline: true},
+					{ name: '"skip" and "stop"', value: 'Skips to the next song in queue or stops playback.', inline: true}
                 )
                 .setFooter('Copyright (c) 2020 Lord Vertice', 'attachment://miku.jpg');
 
@@ -293,6 +296,16 @@ async function execute(message, serverQueue) {
     return message.channel.send(
       "I need the permissions to join and speak in your voice channel!"
     );
+  }
+
+  const validLink = ['https://www.youtube.com/watch?v=', 'https://youtu.be/']
+  if(args[1] == null){
+	message.channel.send('You have to enter a valid YouTube link.');
+	return;
+  }
+  if(!validLink.some(word => args[1].startsWith(word))){
+	message.channel.send('You have to enter a valid YouTube link! Searching is not supported yet.');
+	return;
   }
 
   const songInfo = await ytdl.getInfo(args[1]);
