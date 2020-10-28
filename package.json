@@ -1,0 +1,16 @@
+{
+  "name": "resistancebot",
+  "version": "2.0.0-alpha1",
+  "description": "Resi-chan.",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^12.4.1",
+    "enmap": "^5.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lord Vertice#4078",
+  "license": "MIT"
+}
