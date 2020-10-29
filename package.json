@@ -1,6 +1,6 @@
 {
   "name": "resistancebot",
-  "version": "2.0.0-alpha1",
+  "version": "2.0.0-alpha2",
   "description": "Resi-chan.",
   "main": "index.js",
   "dependencies": {
