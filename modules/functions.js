@@ -8,4 +8,7 @@ module.exports = (client) => {
             );
         return timeOutput;
     };
+    client.autoResTriggered = (n, message) => {
+        console.log(`[${client.getTime()}] ${message.author.tag} triggered the "${n}" autoresponder on server "${message.guild.name}" in channel "${message.channel.name}".`);
+    };
 }
