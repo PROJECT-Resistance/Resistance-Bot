@@ -4,17 +4,18 @@ const Enmap = require("enmap");
 
 const client = new Discord.Client();
 const config = require("./config.json");
-
 client.config = config;
 require("./modules/functions.js")(client);
 
+const version = require("./package.json").version;
+
 
 console.log(
-    '\n-----ResiOS Startup-----\n\n'+
+    `\n---- Welcome to ResiOS version ${version} ----\n\n`+
     'Copyright (c) 2020 Lord Vertice\n\n\n'+
-    'This project is licensed under the MIT License. Refer to the LICENSE.md file for more information.\n'+
-    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.\n\n'+
-    '-----ResiOS Loading-----\n\n'+
+    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.\n'+
+    'This project is licensed under the MIT License. Refer to the LICENSE file for more information.\n\n\n'+
+    'Loading...\n\n'+
     'Initializing module loader...'
 );
 
