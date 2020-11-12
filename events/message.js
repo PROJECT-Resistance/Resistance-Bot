@@ -1,22 +1,18 @@
 module.exports = (client, message) => {
-	const autoresponders = [
-		goofnite = ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight', 'good night', 'gute nacht'],
-		goodmorning = ['goodmorning', 'good morning', 'morning', 'mornin', 'goodmorning!', 'good morning!', 'morning!'],
-		hi = ['hi', 'hey', 'hello', 'hallo', 'heya', 'hihi', 'hey hey', 'hi!', 'hey!', 'hello!', 'hallo!', 'heya!', 'hihi!', 'hey hey!'],
-		welcomeBack = ['back', 'bacc', 'bek', 'bak', 'becc']
+	const Autoresponder = require('../modules/classes/Autoresponder.js');
+	
+	const responderArray = [
+		goofnite = new Autoresponder('goofnite', ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight', 'good night', 'gute nacht'], `Goofnite, ${message.author}!`),
+		goodmorning = new Autoresponder('goodmorning', ['goodmorning', 'good morning', 'morning', 'mornin', 'goodmorning!', 'good morning!', 'morning!'], `Good morning, ${message.author}!`),
+		hi = new Autoresponder('hi', ['hi', 'hey', 'hello', 'hallo', 'heya', 'hihi', 'hey hey', 'hi!', 'hey!', 'hello!', 'hallo!', 'heya!', 'hihi!', 'hey hey!'], `Hi ${message.author}!`),
+		welcomeBack = new Autoresponder('welcomeBack', ['back', 'bacc', 'bek', 'bak', 'becc'], `Welcome back, ${message.author}!`),
+		gtg = new Autoresponder('gtg', 'gtg', `See you soon, ${message.author}!`)
 	];
 
-	const responds = {
-		'1' : `Goofnite, ${message.author}!`,
-		'2' : `Good morning, ${message.author}!`,
-		'3' : `Hi ${message.author}!`,
-		'4' : `Welcome back, ${message.author}!`
-	};
-
-	for(i = 0; i < autoresponders.length; i++){
-		if(autoresponders[i].includes(message.content.toLowerCase())){
-			message.channel.send(responds[i+1]);
-			client.autoResTriggered(autoresponders[i][0], message);
+	for (i = 0; i < responderArray.length; i++) {
+		if (responderArray[i].getTriggers().includes(message.content.toLowerCase())) {
+			message.channel.send(responderArray[i].getResponse());
+			client.autoResTriggered(responderArray[i].getName(), message);
 		}
 	}
 
