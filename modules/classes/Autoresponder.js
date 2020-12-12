@@ -7,8 +7,7 @@ class Autoresponder {
     }
 
     print () {
-        console.log(this.triggers);
-        console.log(this.response);
+        console.log(`This is the "${this.name}" auto-responder. It is triggered by these words: "${this.triggers.join(", ")}". It replies with "${this.response}"`);
     }
 
     getTriggers () {
