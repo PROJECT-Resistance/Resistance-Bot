@@ -1,5 +1,4 @@
 exports.run = async (client, message, [action, key, ...value]) => {
-
 	const settings = message.settings;
 	const defaults = client.settings.get("default");
 	const overrides = client.settings.get(message.guild.id);
