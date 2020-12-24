@@ -4,7 +4,7 @@
   "description": "Resi-chan.",
   "main": "index.js",
   "dependencies": {
-    "discord.js": "^12.4.1",
+    "discord.js": "^12.5.1",
     "enmap": "^5.8.0"
   },
   "devDependencies": {},
