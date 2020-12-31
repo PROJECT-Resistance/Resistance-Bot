@@ -1,11 +1,13 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const Enmap = require("enmap");
+const interactions = require("discord-slash-commands-client");
 
 const client = new Discord.Client();
 const config = require("./config.json");
 client.config = config;
 require("./modules/functions.js")(client);
+client.interactions = new interactions.Client(config.token, "740219593880240228");
 
 const version = require("./package.json").version;
 
