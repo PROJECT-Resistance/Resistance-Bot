@@ -4,8 +4,9 @@
   "description": "Resi-chan.",
   "main": "index.js",
   "dependencies": {
-    "discord.js": "^12.5.1",
-    "enmap": "^5.8.0"
+    "discord-slash-commands-client": "^1.1.0",
+    "discord.js": "git+https://github.com/MatteZ02/discord.js.git",
+    "enmap": "^5.8.2"
   },
   "devDependencies": {},
   "scripts": {
