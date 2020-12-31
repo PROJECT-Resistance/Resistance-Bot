@@ -1,8 +1,4 @@
 module.exports = (client, interaction) => {
-    var args = [];
-    if(interaction.content != null) {
-        args = interaction.content.toLowerCase().split(/ +/g);
-    }
     const command = interaction.name;
 
 	const cmd = client.commands.get(command);
