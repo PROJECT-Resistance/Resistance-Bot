@@ -3,7 +3,7 @@
 The Resistance Bot is a small Discord bot made using [discord.js](https://discord.js.org/). It is designed to automate some specific administrative actions, as well as provide fun and entertaining features for the group.
 
 ## Important!
-This is the unfinished version of Resi 2.0, a full rewrite of the original bot. DO NOT use this in production.
+You are viewing the alpha branch of version 2.0. It is currently unstable, so use the master or public-version branch instead.
 
 ## Contributing
 Merge requests are welcome. For major changes, please open an issue first to discuss what you would like to change.  
@@ -11,7 +11,11 @@ Merge requests are welcome. For major changes, please open an issue first to dis
 In order to create a merge request, you might need to fork the project first.
 
 ## Contact
-You don't know who I am? Why are you even here? Well, if you want to talk to me about this project (or something else), feel free to add me on Discord, my username is Lord Vertice#4078.
+- [Lord Vertice#4078](https://discord.gg)
+- [Twitter](https://twitter.com/lord_vertice) (dead)
+- [Instagram](https://www.instagram.com/lordvertice/) (dead)
+- [YouTube](https://www.youtube.com/channel/UCC-U2Vlyo96kXhMdjkvWYKQ) (dead)
+- [Twitch](https://www.twitch.tv/lordvertice) (dead)
 
 ## License
 This project is licensed under the **MIT License.** [Learn more](https://choosealicense.com/licenses/mit/)  
