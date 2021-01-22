@@ -1,20 +1,20 @@
 module.exports = (client) => {
     const defaultSettings = {
-        "prefix": "!"
+        prefix: '!'
     };
 
     client.getSettings = (guild) => {
-        client.settings.ensure("default", defaultSettings);
-        if (!guild) return client.settings.get("default");
+        client.settings.ensure('default', defaultSettings);
+        if (!guild) return client.settings.get('default');
         const guildConf = client.settings.get(guild.id) || {};
-        return ({ ...client.settings.get("default"), ...guildConf });
+        return ({ ...client.settings.get('default'), ...guildConf });
     };
 
     client.awaitReply = async (msg, question, limit = 60000) => {
         const filter = m => m.author.id === msg.author.id;
         await msg.channel.send(question);
         try {
-            const collected = await msg.channel.awaitMessages(filter, { max: 1, time: limit, errors: ["time"] });
+            const collected = await msg.channel.awaitMessages(filter, { max: 1, time: limit, errors: ['time'] });
             return collected.first().content;
         } catch (e) {
             return false;
@@ -22,8 +22,8 @@ module.exports = (client) => {
     };
 
     client.getTime = () => {
-        var time = new Date();
-        var timeOutput = (
+        const time = new Date();
+        const timeOutput = (
             ('0' + time.getHours()).slice(-2) + ':' +
             ('0' + time.getMinutes()).slice(-2) + ':' +
             ('0' + time.getSeconds()).slice(-2)
@@ -34,4 +34,4 @@ module.exports = (client) => {
     client.autoResTriggered = (name, message) => {
         console.log(`[${client.getTime()}] ${message.author.tag} triggered the "${name}" autoresponder on server "${message.guild.name}" in channel "${message.channel.name}".`);
     };
-}
+};

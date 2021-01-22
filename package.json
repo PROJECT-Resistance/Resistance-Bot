@@ -1,6 +1,6 @@
 {
   "name": "resistancebot",
-  "version": "2.0.0-alpha7",
+  "version": "2.0.0-alpha8",
   "description": "Resi-chan.",
   "main": "index.js",
   "dependencies": {
@@ -12,5 +12,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lord Vertice#4078",
-  "license": "MIT"
+  "license": "MIT",
+  "eslintConfig": {
+    "rules": {
+      "semi": [1, "always"],
+      "indent": [1, 4]
+    }
+  }
 }
