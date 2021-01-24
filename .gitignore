@@ -4,3 +4,4 @@ log.txt
 config.json
 
 data/
+node_modules/
