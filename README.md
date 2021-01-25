@@ -20,4 +20,4 @@ In order to create a merge request, you might need to fork the project first.
 ## License
 This project is licensed under the **MIT License.** [Learn more](https://choosealicense.com/licenses/mit/)  
 
-Copyright (c) 2020 Lord Vertice
+Copyright (c) 2020-2021 Lord Vertice

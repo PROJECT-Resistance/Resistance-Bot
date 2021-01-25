@@ -1,22 +1,18 @@
 {
   "name": "resistancebot",
-  "version": "2.0.0-alpha8",
+  "version": "2.0.0-alpha9",
   "description": "Resi-chan.",
   "main": "index.js",
   "dependencies": {
     "discord.js": "^12.4.1",
     "enmap": "^5.8.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "standardx": "^7.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lord Vertice#4078",
-  "license": "MIT",
-  "eslintConfig": {
-    "rules": {
-      "semi": [1, "always"],
-      "indent": [1, 4]
-    }
-  }
+  "license": "MIT"
 }

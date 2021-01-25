@@ -1,12 +1,12 @@
 module.exports = (client, message) => {
     const Autoresponder = require('../modules/classes/Autoresponder.js');
-    const responderArray = [ /* eslint no-undef: 0 */
+    const responderArray = [ /* eslint-disable */
         goofnite = new Autoresponder('goofnite', ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight', 'good night', 'gute nacht'], `Goofnite, ${message.author}!`),
         goodmorning = new Autoresponder('goodmorning', ['goodmorning', 'good morning', 'morning', 'mornin', 'goodmorning!', 'good morning!', 'morning!'], `Good morning, ${message.author}!`),
         hi = new Autoresponder('hi', ['hi', 'hey', 'hello', 'hallo', 'heya', 'hihi', 'hey hey', 'hi!', 'hey!', 'hello!', 'hallo!', 'heya!', 'hihi!', 'hey hey!'], `Hi ${message.author}!`),
         welcomeBack = new Autoresponder('welcomeBack', ['back', 'bacc', 'bek', 'bak', 'becc'], `Welcome back, ${message.author}!`),
         gtg = new Autoresponder('gtg', 'gtg', `See you soon, ${message.author}!`)
-    ]; /* eslint no-undef: 1 */
+    ]; /* eslint-enable */
 
     for (let i = 0; i < responderArray.length; i++) {
         if (responderArray[i].getTriggers().includes(message.content.toLowerCase())) {
