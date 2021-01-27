@@ -21,6 +21,17 @@ module.exports = (client) => {
         }
     };
 
+    client.getPreviousMsg = async (msg) => {
+        return msg.channel.messages.fetch({ limit: 2 })
+            .then(messageMappings => {
+                const messages = Array.from(messageMappings.values());
+                const previousMessage = messages[1];
+                return previousMessage.content;
+            })
+            .catch(error => console.log(error))
+        ;
+    };
+
     client.getTime = () => {
         const time = new Date();
         const timeOutput = (
