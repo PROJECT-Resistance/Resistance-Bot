@@ -1,6 +1,6 @@
 module.exports = (client) => {
     const defaultSettings = {
-        prefix: '!'
+        prefix: client.config.prefix
     };
 
     client.getSettings = (guild) => {
@@ -30,6 +30,10 @@ module.exports = (client) => {
             })
             .catch(error => console.log(error))
         ;
+    };
+
+    client.sleep = async (ms) => {
+        return new Promise(resolve => setTimeout(resolve, ms));
     };
 
     client.getTime = () => {

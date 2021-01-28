@@ -5,7 +5,6 @@ const Enmap = require('enmap');
 const client = new Discord.Client();
 const config = require('./config.json');
 client.config = config;
-require('./modules/functions.js')(client);
 
 const version = require('./package.json').version;
 
@@ -23,9 +22,9 @@ fs.readdir('./events/', (err, files) => {
     console.log('Loading event files...');
     files.forEach(file => {
         if (!file.endsWith('.js')) return;
-        const event = require(`./events/${file}`);
         const eventName = file.split('.')[0];
         console.log(`Attempting to load event "${eventName}"`);
+        const event = require(`./events/${file}`);
         client.on(eventName, event.bind(null, client));
     });
     console.log('Done.');
@@ -39,10 +38,22 @@ fs.readdir('./commands/', (err, files) => {
     console.log('Loading command files...');
     files.forEach(file => {
         if (!file.endsWith('.js')) return;
-        const command = require(`./commands/${file}`);
         const commandName = file.split('.')[0];
         console.log(`Attempting to load command "${commandName}"`);
+        const command = require(`./commands/${file}`);
         client.commands.set(commandName, command);
+    });
+    console.log('Done.');
+});
+
+fs.readdir('./modules/', (err, files) => {
+    if (err) return console.error(err);
+    console.log('Loading module files...');
+    files.forEach(file => {
+        if (!file.endsWith('.js')) return;
+        const moduleName = file.split('.')[0];
+        console.log(`Attempting to load module "${moduleName}"`);
+        require(`./modules/${file}`)(client);
     });
     console.log('Done.');
 });

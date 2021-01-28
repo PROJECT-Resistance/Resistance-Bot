@@ -17,6 +17,8 @@ module.exports = (client, message) => {
 
     if (message.author.bot) return;
 
+    if (message.content.trim().endsWith('?')) client.crickets(message);
+
     const settings = message.settings = client.getSettings(message.guild);
 
     if (message.content.indexOf(settings.prefix) !== 0) return;

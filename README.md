@@ -12,6 +12,7 @@ In order to create a merge request, you might need to fork the project first.
 
 ## Contact
 - [Lord Vertice#4078](https://discord.gg)
+- [GitHub](https://github.com/LordVertice)
 - [Twitter](https://twitter.com/lord_vertice) (dead)
 - [Instagram](https://www.instagram.com/lordvertice/) (dead)
 - [YouTube](https://www.youtube.com/channel/UCC-U2Vlyo96kXhMdjkvWYKQ) (dead)
@@ -19,5 +20,7 @@ In order to create a merge request, you might need to fork the project first.
 
 ## License
 This project is licensed under the **MIT License.** [Learn more](https://choosealicense.com/licenses/mit/)  
+
+Art and assets by Mk_TheOnePixel.
 
 Copyright (c) 2020-2021 Lord Vertice
