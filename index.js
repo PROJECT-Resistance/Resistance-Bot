@@ -10,7 +10,8 @@ const version = require('./package.json').version;
 
 console.log(
     `\n---- Welcome to ResiOS version ${version} ----\n\n` +
-    'Copyright (c) 2020-2021 Lord Vertice\n\n\n' +
+    'Copyright (c) 2020-2021 Lord Vertice\n' +
+    'Art and assets by Mk_TheOnePixel.\n\n\n'+
     'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.\n' +
     'This project is licensed under the MIT License. Refer to the LICENSE file for more information.\n\n\n' +
     'Loading...\n\n' +
@@ -48,7 +49,7 @@ fs.readdir('./commands/', (err, files) => {
 
 fs.readdir('./modules/', (err, files) => {
     if (err) return console.error(err);
-    console.log('Loading module files...');
+    console.log('Loading other module files...');
     files.forEach(file => {
         if (!file.endsWith('.js')) return;
         const moduleName = file.split('.')[0];
