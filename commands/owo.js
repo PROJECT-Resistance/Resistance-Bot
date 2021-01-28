@@ -3,12 +3,10 @@ exports.run = async (client, message, args) => {
         const previousMsg = await client.getPreviousMsg(message);
         const owo = await owoify(previousMsg);
         message.channel.send(owo);
-        message.delete();
     } else {
         const msg = await message.channel.messages.fetch(args[0]);
         const owo = await owoify(msg.content);
         message.channel.send(owo);
-        message.delete();
     }
 };
 
