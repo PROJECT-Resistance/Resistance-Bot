@@ -4,7 +4,7 @@ module.exports = (client) => {
         client.on('message', message => {
             if (message.channel === msg.channel) responded = true;
         });
-        await client.sleep(10000);
+        await client.sleep(60000);
         if (!responded) {
             msg.channel.send(':cricket:');
             client.autoResTriggered('cricket', msg);
