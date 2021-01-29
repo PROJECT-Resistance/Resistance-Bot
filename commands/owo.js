@@ -33,7 +33,10 @@ const owoify = async str => {
     str = str.replace(/(?:l|r)/g, 'w');
     str = str.replace(/(?:L|R)/g, 'W');
     str = str.replace(/n([aeiou])/g, 'ny$1');
-    str = str.replace(/N([aeiou])|N([AEIOU])/g, 'Ny$1');
+    str = str.replace(/N([aeiou])/g, 'Ny$1');
+    str = str.replace(/N([AEIOU])/g, 'NY$1');
+    str = str.replace(/v/g, 'w');
+    str = str.replace(/V/g, 'W');
     str = str.replace(/ove/g, 'uv');
     str = str.replace(/nd(?= |$)/g, 'ndo');
     str = str.replace(/!+/g, ` ${kaomoji[Math.floor(Math.random() * kaomoji.length)]}`);
