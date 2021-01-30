@@ -36,8 +36,8 @@ module.exports = (client) => {
         return new Promise(resolve => setTimeout(resolve, ms));
     };
 
-    client.getTime = () => {
-        const time = new Date();
+    client.getTime = (time) => {
+        if (!time) time = new Date();
         const timeOutput = (
             ('0' + time.getHours()).slice(-2) + ':' +
             ('0' + time.getMinutes()).slice(-2) + ':' +

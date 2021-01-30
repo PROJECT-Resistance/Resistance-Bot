@@ -5,13 +5,13 @@ const Enmap = require('enmap');
 const client = new Discord.Client();
 const config = require('./config.json');
 client.config = config;
-
-const version = require('./package.json').version;
+client.version = require('./package.json').version;
+client.Discord = Discord;
 
 console.log(
-    `\n---- Welcome to ResiOS version ${version} ----\n\n` +
+    `\n---- Welcome to ResiOS version ${client.version} ----\n\n` +
     'Copyright (c) 2020-2021 Lord Vertice\n' +
-    'Art and assets by Mk_TheOnePixel.\n\n\n'+
+    'Art and assets by Mk_TheOnePixel.\n\n\n' +
     'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.\n' +
     'This project is licensed under the MIT License. Refer to the LICENSE file for more information.\n\n\n' +
     'Loading...\n\n' +
