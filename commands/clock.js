@@ -2,10 +2,10 @@ exports.run = async (client, message, args) => {
     const gitHub = 'https://github.com/PROJECT-Resistance/Resistance-Bot';
 
     const d = new Date();
-    const utc = client.getTime(convertTZ(d, 'Etc/UTC'));
-    const berlin = client.getTime(convertTZ(d, 'Europe/Berlin'));
-    const ct = client.getTime(convertTZ(d, 'America/Swift_Current'));
-    const pt = client.getTime(convertTZ(d, 'America/Los_Angeles'));
+    const utc = convertTZ(d, 'Etc/UTC');
+    const berlin = convertTZ(d, 'Europe/Berlin');
+    const ct = convertTZ(d, 'America/Swift_Current');
+    const pt = convertTZ(d, 'America/Los_Angeles');
 
     const output = new client.Discord.MessageEmbed()
         .setColor('#406ddc')
@@ -26,5 +26,23 @@ exports.run = async (client, message, args) => {
 };
 
 function convertTZ (date, tzString) {
-    return new Date((typeof date === 'string' ? new Date(date) : date).toLocaleString('en-US', { timeZone: tzString }));
+    let localeString = date.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: tzString });
+    let arr = localeString.split(/, +/g);
+    let out = `${arr[3]}, ${arr[0]}, ${swapDay(arr[1])} ${arr[2]}`;
+    return out;
+}
+function nth (d) {
+    if (d > 3 && d < 21) return 'th';
+    switch (d % 10) {
+    case 1:  return "st";
+    case 2:  return "nd";
+    case 3:  return "rd";
+    default: return "th";
+    }
+}
+function swapDay (monthday) {
+    let [month, day] = monthday.split(/ +/g);
+    day = day + nth(day);
+    let daymonth = day + ' ' + month;
+    return daymonth;
 }
