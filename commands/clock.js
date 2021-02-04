@@ -26,23 +26,23 @@ exports.run = async (client, message, args) => {
 };
 
 function convertTZ (date, tzString) {
-    let localeString = date.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: tzString });
-    let arr = localeString.split(/, +/g);
-    let out = `${arr[3]}, ${arr[0]}, ${swapDay(arr[1])} ${arr[2]}`;
+    const localeString = date.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: tzString });
+    const arr = localeString.split(/, +/g);
+    const out = `${arr[3]}, ${arr[0]}, ${swapDay(arr[1])} ${arr[2]}`;
     return out;
 }
 function nth (d) {
     if (d > 3 && d < 21) return 'th';
     switch (d % 10) {
-    case 1:  return "st";
-    case 2:  return "nd";
-    case 3:  return "rd";
-    default: return "th";
+    case 1: return 'st';
+    case 2: return 'nd';
+    case 3: return 'rd';
+    default: return 'th';
     }
 }
 function swapDay (monthday) {
     let [month, day] = monthday.split(/ +/g);
     day = day + nth(day);
-    let daymonth = day + ' ' + month;
+    const daymonth = day + ' ' + month;
     return daymonth;
 }
