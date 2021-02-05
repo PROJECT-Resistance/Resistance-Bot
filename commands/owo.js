@@ -1,7 +1,7 @@
 exports.run = async (client, message, args) => {
     if (!args[0]) {
         const previousMsg = await client.getPreviousMsg(message);
-        const owo = await owoify(previousMsg);
+        const owo = await owoify(previousMsg.content);
         message.channel.send(owo);
     } else {
         const msg = await message.channel.messages.fetch(args[0]);

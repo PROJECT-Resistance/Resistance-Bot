@@ -21,6 +21,11 @@ module.exports = (client, message) => {
 
     const settings = message.settings = client.getSettings(message.guild);
 
+    if (settings.annoy === true) {
+        message.channel.send(message.content);
+        client.autoResTriggered('annoy', message);
+    }
+
     if (message.content.indexOf(settings.prefix) !== 0) return;
 
     const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);

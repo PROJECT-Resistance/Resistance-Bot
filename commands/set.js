@@ -6,9 +6,10 @@ exports.run = async (client, message, [action, key, ...value]) => {
 
     if (action === 'edit') {
         if (!key) return message.channel.send('Please specify a key to edit');
-        if (!defaults[key]) return message.channel.send('This key does not exist in the settings');
-        const joinedValue = value.join(' ');
+        if (!defaults[key].toString()) return message.channel.send('This key does not exist in the settings');
+        let joinedValue = value.join(' ');
         if (joinedValue.length < 1) return message.channel.send('Please specify a new value');
+        if (/\b(true|false)\b/gi.test(joinedValue)) joinedValue = (joinedValue === 'true');
         if (joinedValue === settings[key]) return message.channel.send('This setting already has that value!');
 
         if (!client.settings.has(message.guild.id)) client.settings.set(message.guild.id, {});

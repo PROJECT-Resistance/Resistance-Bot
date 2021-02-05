@@ -1,6 +1,7 @@
 module.exports = (client) => {
     const defaultSettings = {
-        prefix: client.config.prefix
+        prefix: client.config.prefix,
+        annoy: false
     };
 
     client.getSettings = (guild) => {
@@ -26,7 +27,7 @@ module.exports = (client) => {
             .then(messageMappings => {
                 const messages = Array.from(messageMappings.values());
                 const previousMessage = messages[1];
-                return previousMessage.content;
+                return previousMessage;
             })
             .catch(error => console.log(error))
         ;
