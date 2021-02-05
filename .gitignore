@@ -1,7 +1,5 @@
-
-token.json
-log.txt
 config.json
+log.*
 
 data/
 node_modules/
