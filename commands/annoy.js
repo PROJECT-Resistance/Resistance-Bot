@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
     } else if (/\b(on|off)\b/gi.test(args[0])) {
         active = (args[0] === 'on');
         if (!client.settings.has(message.guild.id)) client.settings.set(message.guild.id, {});
-        if (active === settings['annoy']) return message.channel.send(`Annoy is already ${args[0]}!`);
+        if (active === settings.annoy) return message.channel.send(`Annoy is already ${args[0]}!`);
         client.settings.set(message.guild.id, active, 'annoy');
         message.channel.send(`Annoy set to ${active}.`);
     } else {

@@ -1,4 +1,6 @@
 module.exports = (client, message) => {
+    const settings = message.settings = client.getSettings(message.guild);
+    
     const Autoresponder = require('../modules/classes/Autoresponder.js');
     const responderArray = [ /* eslint-disable no-undef */
         goofnite = new Autoresponder('goofnite', ['goofnite', 'goofnite!', 'goofnitee', 'goofnitee!', 'goodnight', 'good night', 'gute nacht'], `Goofnite, ${message.author}!`),
@@ -9,7 +11,7 @@ module.exports = (client, message) => {
     ]; /* eslint-enable no-undef */
 
     for (let i = 0; i < responderArray.length; i++) {
-        if (responderArray[i].getTriggers().includes(message.content.toLowerCase())) {
+        if (responderArray[i].getTriggers().includes(message.content.toLowerCase()) && settings.annoy === false) {
             message.channel.send(responderArray[i].getResponse());
             client.autoResTriggered(responderArray[i].getName(), message);
         }
@@ -19,9 +21,7 @@ module.exports = (client, message) => {
 
     if (message.content.trim().endsWith('?')) client.crickets(message);
 
-    const settings = message.settings = client.getSettings(message.guild);
-
-    if (settings.annoy === true) {
+    if (settings.annoy === true && !message.author.bot) {
         message.channel.send(message.content);
         client.autoResTriggered('annoy', message);
     }
