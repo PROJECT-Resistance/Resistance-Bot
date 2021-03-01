@@ -30,7 +30,7 @@
   </p>
 </p>
 
-
+***
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -76,7 +76,7 @@ Features:
 
 If you have any questions, ideas for new features, any problems you need help solving, or even some improvements, feel free to open an [issue](https://github.com/PROJECT-Resistance/Resistance-Bot/issues).
 
-Special thanks to Mk_TheOnePixel for providing artwork and assets. :smile:
+Special thanks to Mk_TheOnePixel for creating Resi's artwork and logo. :smile:
 
 ### Built With
 
@@ -101,7 +101,7 @@ npm i -g npm
 
 You also need [git](https://git-scm.com/) if you want to make contributions or download updates.
 
-You will need a Discord bot application and its token, you can follow the steps in the [wiki](https://github.com/PROJECT-Resistance/Resistance-Bot/wiki) for that.
+You will need a Discord bot application and its token, you can follow the steps in the [wiki](https://github.com/PROJECT-Resistance/Resistance-Bot/wiki) for that. You should add the bot to a server of your choice.
 
 ### Installation
 
@@ -139,16 +139,24 @@ You're all done, read the next section to get the bot running.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+Once the bot is installed and you configured it correctly, run the following command in your project folder:
+```sh
+node .
+```
+On Linux you can also use this command to create a log file for the bot's output:
+```sh
+node . 2>&1 | tee -a log.txt
+```
+_For more details and a list of all commands, please refer to the [Documentation](https://github.com/https://github.com/PROJECT-Resistance/Resistance-Bot/wiki) (yet to be created)._
 
 
 
 <!-- ROADMAP -->
 ## Roadmap
-
+Version 2.0.0 of Resi is currently in development. If you want to propose a feature or help out, feel free to open an [issue](https://github.com/https://github.com/PROJECT-Resistance/Resistance-Bot/issues).
+<!--
 See the [open issues](https://github.com/https://github.com/PROJECT-Resistance/Resistance-Bot/issues) for a list of proposed features (and known issues).
+-->
 
 
 
@@ -168,32 +176,31 @@ Contributions are what make the open source community such an amazing place to b
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+You can reach me in these places:
+- Lord Vertice#4078 ([Discord](https://discord.gg))
+- [GitHub](https://github.com/LordVertice)
+- [Twitter](https://twitter.com/lord_vertice)
+- [Instagram](https://www.instagram.com/lordvertice/)
+- [YouTube](https://www.youtube.com/channel/UCC-U2Vlyo96kXhMdjkvWYKQ)
+- [Twitch](https://www.twitch.tv/lordvertice)
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/PROJECT-Resistance/Resistance-Bot](https://github.com/PROJECT-Resistance/Resistance-Bot)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
+* Mk_TheOnePixel for the amazing artworks of Resi-chan :heart:
+* [Othneil Drew](https://github.com/othneildrew) for this fancy README template
+* The creators of [discord.js](https://discord.js.org/) for making this bot possible
+* And of course [Discord](https://discord.gg) for giving us a place to talk
 
 
 
@@ -210,6 +217,6 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [issues-shield]: https://img.shields.io/github/issues/PROJECT-Resistance/Resistance-Bot?color=%233366ff&style=for-the-badge
 [issues-url]: https://github.com/PROJECT-Resistance/Resistance-Bot/issues
 [license-shield]: https://img.shields.io/github/license/PROJECT-Resistance/Resistance-Bot?color=%233366ff&style=for-the-badge
-[license-url]: https://github.com/PROJECT-Resistance/Resistance-Bot/blob/main/LICENSE.txt
+[license-url]: LICENSE
 [size-shield]: https://img.shields.io/github/repo-size/PROJECT-Resistance/Resistance-Bot?color=%233366ff&style=for-the-badge
 [product-screenshot]: https://i.ibb.co/HGypspc/resistance-chan-first-snow.png
