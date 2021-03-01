@@ -1,7 +1,7 @@
 {
-  "name": "resistancebot",
+  "name": "resistance-bot",
   "version": "2.0.0-beta6",
-  "description": "Resi-chan.",
+  "description": "A Discord bot for the Resistance Project",
   "main": "index.js",
   "dependencies": {
     "discord.js": "^12.5.1",
@@ -11,8 +11,17 @@
     "standardx": "^7.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "check": "npx standardx"
   },
-  "author": "Lord Vertice#4078",
-  "license": "MIT"
+  "author": "Lord Vertice <lordvertice333@gmail.com> (https://github.com/LordVertice)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PROJECT-Resistance/Resistance-Bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PROJECT-Resistance/Resistance-Bot/issues",
+    "email": "lordvertice333@gmail.com"
+  },
+  "homepage": "https://github.com/PROJECT-Resistance/Resistance-Bot#readme"
 }
