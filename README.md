@@ -90,34 +90,51 @@ Resi was made using the following projects:
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Follow these steps to install Resi on your machine. These instructions are meant for advanced users, but a more detailed tutorial for less advanced users will be added to the wiki soon.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+First you need to have [Node.js](https://nodejs.org/) (and npm) installed on your computer. After that make sure npm is up-to-date:
+```sh
+npm i -g npm
+```
+
+You also need [git](https://git-scm.com/) if you want to make contributions or download updates.
+
+You will need a Discord bot application and its token, you can follow the steps in the [wiki](https://github.com/PROJECT-Resistance/Resistance-Bot/wiki) for that.
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
+1. Clone the Repo or download and unzip the code from the [releases](https://github.com/PROJECT-Resistance/Resistance-Bot/releases) page
+	```sh
+	git clone https://github.com/PROJECT-Resistance/Resistance-Bot.git
+	```
 
+2. Go into the downloaded folder
+	```sh
+	cd Resistance-Bot
+	```
 
+3. Create a JSON file called `config.json`
+	```sh
+	touch config.json
+	```
+
+4. And put in the following text
+	```json
+	{
+	  "token": "YOUR_TOKEN_HERE",
+	  "prefix": "!",
+	  "ownerID": "YOUR_DISCORD_ID_HERE"
+	}
+	```
+	Make sure to replace `YOUR_TOKEN_HERE` and `YOUR_DISCORD_ID_HERE` with real values.
+
+5. Install the dependencies (you can remove the `--only=prod` flag if you want to contribute to the code)
+	```sh
+	npm i --only=prod
+	```
+You're all done, read the next section to get the bot running.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
