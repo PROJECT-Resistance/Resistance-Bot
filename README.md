@@ -3,6 +3,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+![Size][size-shield]
 
 
 
@@ -66,23 +67,23 @@
     <img src="https://i.ibb.co/HGypspc/resistance-chan-first-snow.png" alt="Logo" width="579" height="748">
   </a>
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+This is Resistance-chan, also known as Resi. She's a Discord bot built with Node.js and the discord.js library. Resi provides a handful of fun and helpful commands for the "PROJECT: Resistance" Discord server, and she can be expanded easily with modular commands.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+Features:
+* Modular command and event loading for easy modification
+* Persistent per-server settings
+* Can be self hosted (tutorial will be added to the wiki)
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
+If you have any questions, ideas for new features, any problems you need help solving, or even some improvements, feel free to open an [issue](https://github.com/PROJECT-Resistance/Resistance-Bot/issues).
 
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+Special thanks to Mk_TheOnePixel for providing artwork and assets. :smile:
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+Resi was made using the following projects:
+* [Node.js](https://nodejs.org/)
+* [discord.js](https://discord.js.org/#/)
+* [Enmap](https://www.npmjs.com/package/enmap)
 
 
 
@@ -193,4 +194,5 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [issues-url]: https://github.com/PROJECT-Resistance/Resistance-Bot/issues
 [license-shield]: https://img.shields.io/github/license/PROJECT-Resistance/Resistance-Bot?color=%233366ff&style=for-the-badge
 [license-url]: https://github.com/PROJECT-Resistance/Resistance-Bot/blob/main/LICENSE.txt
+[size-shield]: https://img.shields.io/github/repo-size/PROJECT-Resistance/Resistance-Bot?color=%233366ff&style=for-the-badge
 [product-screenshot]: https://i.ibb.co/HGypspc/resistance-chan-first-snow.png
