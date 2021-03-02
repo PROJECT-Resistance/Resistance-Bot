@@ -10,7 +10,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/https://github.com/PROJECT-Resistance/Resistance-Bot">
+  <a href="https://github.com/PROJECT-Resistance/Resistance-Bot">
     <img src="https://i.ibb.co/SxMRSKw/resistance-chan-pfp.png" alt="Logo" width="180" height="180">
   </a>
 
@@ -63,7 +63,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-  <a href="https://github.com/https://github.com/PROJECT-Resistance/Resistance-Bot">
+  <a href="https://github.com/PROJECT-Resistance/Resistance-Bot">
     <img src="https://i.ibb.co/HGypspc/resistance-chan-first-snow.png" alt="Logo" width="579" height="748">
   </a>
 
@@ -147,17 +147,17 @@ On Linux you can also use this command to create a log file for the bot's output
 ```sh
 node . 2>&1 | tee -a log.txt
 ```
-_For more details and a list of all commands, please refer to the [Documentation](https://github.com/https://github.com/PROJECT-Resistance/Resistance-Bot/wiki) (yet to be created)._
+_For more details and a list of all commands, please refer to the [wiki](https://github.com/PROJECT-Resistance/Resistance-Bot/wiki) (not added yet)._
 
 
 
 <!-- ROADMAP -->
 ## Roadmap
-Version 2.0.0 of Resi is currently in development. If you want to propose a feature or help out, feel free to open an [issue](https://github.com/https://github.com/PROJECT-Resistance/Resistance-Bot/issues).
+Version 2.0.0 of Resi is currently in development. If you want to propose a feature or help out, feel free to open an [issue](https://github.com/PROJECT-Resistance/Resistance-Bot/issues).
 
-In addition to version 2.0.0, I will also add the [wiki](https://github.com/https://github.com/PROJECT-Resistance/Resistance-Bot/wiki) soon. It will include tutorials and a list of all commands.
+In addition to version 2.0.0, I will also add the [wiki](https://github.com/PROJECT-Resistance/Resistance-Bot/wiki) soon. It will include tutorials and a list of all commands.
 <!--
-See the [open issues](https://github.com/https://github.com/PROJECT-Resistance/Resistance-Bot/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/PROJECT-Resistance/Resistance-Bot/issues) for a list of proposed features (and known issues).
 -->
 
 
