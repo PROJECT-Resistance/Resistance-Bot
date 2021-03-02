@@ -72,11 +72,11 @@ This is Resistance-chan, also known as Resi. She's a Discord bot built with Node
 Features:
 * Modular command and event loading for easy modification
 * Persistent per-server settings
-* Can be self hosted (tutorial will be added to the wiki)
+* Can be self hosted (tutorial will be added to the [wiki](https://github.com/PROJECT-Resistance/Resistance-Bot/wiki) soon)
 
 If you have any questions, ideas for new features, any problems you need help solving, or even some improvements, feel free to open an [issue](https://github.com/PROJECT-Resistance/Resistance-Bot/issues).
 
-Special thanks to Mk_TheOnePixel for creating Resi's artwork and logo. :smile:
+Special thanks to Mk_TheOnePixel for creating Resi's artwork and logo. :heart:
 
 ### Built With
 
@@ -90,7 +90,7 @@ Resi was made using the following projects:
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Follow these steps to install Resi on your machine. These instructions are meant for advanced users, but a more detailed tutorial for less advanced users will be added to the wiki soon.
+Follow these steps to install Resi on your machine. These instructions are meant for advanced users, but a more detailed tutorial for less advanced users will be added to the [wiki](https://github.com/PROJECT-Resistance/Resistance-Bot/wiki) soon.
 
 ### Prerequisites
 
@@ -124,11 +124,11 @@ You will need a Discord bot application and its token, you can follow the steps 
 	```json
 	{
 	  "token": "YOUR_TOKEN_HERE",
-	  "prefix": "!",
+	  "prefix": "resi",
 	  "ownerID": "YOUR_DISCORD_ID_HERE"
 	}
 	```
-	Make sure to replace `YOUR_TOKEN_HERE` and `YOUR_DISCORD_ID_HERE` with real values.
+	Make sure to replace `YOUR_TOKEN_HERE` and `YOUR_DISCORD_ID_HERE` with real values. You can also replace the default prefix if you want.
 
 5. Install the dependencies (you can remove the `--only=prod` flag if you want to contribute to the code)
 	```sh
@@ -154,6 +154,8 @@ _For more details and a list of all commands, please refer to the [Documentation
 <!-- ROADMAP -->
 ## Roadmap
 Version 2.0.0 of Resi is currently in development. If you want to propose a feature or help out, feel free to open an [issue](https://github.com/https://github.com/PROJECT-Resistance/Resistance-Bot/issues).
+
+In addition to version 2.0.0, I will also add the [wiki](https://github.com/https://github.com/PROJECT-Resistance/Resistance-Bot/wiki) soon. It will include tutorials and a list of all commands.
 <!--
 See the [open issues](https://github.com/https://github.com/PROJECT-Resistance/Resistance-Bot/issues) for a list of proposed features (and known issues).
 -->
@@ -219,4 +221,3 @@ Project Link: [https://github.com/PROJECT-Resistance/Resistance-Bot](https://git
 [license-shield]: https://img.shields.io/github/license/PROJECT-Resistance/Resistance-Bot?color=%233366ff&style=for-the-badge
 [license-url]: LICENSE
 [size-shield]: https://img.shields.io/github/repo-size/PROJECT-Resistance/Resistance-Bot?color=%233366ff&style=for-the-badge
-[product-screenshot]: https://i.ibb.co/HGypspc/resistance-chan-first-snow.png
